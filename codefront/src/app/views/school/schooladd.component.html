@@ -1,0 +1,62 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <strong>Add School</strong>
+          <small>Form</small>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+              </div>
+            </div>
+          </div><!--/.row-->
+		  <div class="row">
+            <div class="form-group col-sm-6">
+              <label for="ccnumber">Registration Number</label>
+                <input type="text" class="form-control" id="regNo" placeholder="Enter your registration name">
+            </div>
+            <div class="form-group col-sm-6">
+              <label for="ccnumber">Registration Date</label>
+              <input class="form-control" id="regDate" type="date" name="regDate" placeholder="date">
+            </div>
+          </div><!--/.row-->
+		  <div class="row">
+            <div class="form-group col-sm-6">
+              <label for="phonenumber">Phone Number</label>
+              <input type="text" class="form-control" id="phonenumber" placeholder="Enter your phone number">
+            </div>
+            <div class="form-group col-sm-6">
+              <label for="city">Email Address</label>
+              <input type="text" class="form-control" id="emailaddress" placeholder="Enter your email address">
+            </div>
+          </div><!--/.row-->
+		  <div class="row">
+            <div class="form-group col-sm-6">
+              <label for="street">Address</label>
+              <input type="text" class="form-control" id="address" placeholder="Enter address">
+            </div>
+            <div class="form-group col-sm-6">
+              <label for="city">City</label>
+              <input type="text" class="form-control" id="city" placeholder="Enter your city">
+            </div>
+          </div><!--/.row-->
+          
+           
+          <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" class="form-control" id="country" placeholder="Country name">
+          </div>
+        </div>
+		<div class="card-footer">
+          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+         <a  [routerLink]="['/school/listing']"> <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Cancel</button></a>
+        </div>
+      </div>
+    </div><!--/.col-->
+  </div>
+  </div>
