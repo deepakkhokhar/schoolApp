@@ -1,0 +1,110 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <strong>Add School User</strong>
+            <small>Form</small>
+          </div>
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="submit(f.value)">
+                <div *ngFor="let alert of alertsDismiss">
+                  <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+                  </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="firstname">FirstName</label>
+                          <input type="text"  id="firstName" placeholder="Enter your firstName" ngModel name="firstName" class="form-control" #firstName="ngModel" minlength="3" maxlength="30"  required>
+                        </div>
+                        
+                        <div *ngIf="firstName.touched && ! firstName.valid">
+                                <div *ngIf="firstName.errors.required">
+                                  Firstname is required
+                                </div>
+                                <div *ngIf="firstName.errors.minlength">
+                                   Firstname minimum length is
+                                  {{ firstName.errors.minlength.requiredLength }}
+                                </div>
+                                <div *ngIf="firstName.errors.maxlength">
+                                  Firstname maximum length is
+                                  {{ firstName.errors.maxlength.requiredLength }}
+                                </div>
+                              </div>
+                        
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="lastname">LastName</label>
+                          <input type="text"  id="lastName" placeholder="Enter your lastName" ngModel name="lastName" class="form-control" #lastName="ngModel" minlength="3" maxlength="30"  required>
+                        </div>
+                        
+                        <div *ngIf="lastName.touched && ! lastName.valid">
+                                <div *ngIf="lastName.errors.required">
+                                  Lastname is required
+                                </div>
+                                <div *ngIf="lastName.errors.minlength">
+                                   lastname minimum length is
+                                  {{ lastName.errors.minlength.requiredLength }}
+                                </div>
+                                <div *ngIf="lastName.errors.maxlength">
+                                  Lastname maximum length is
+                                  {{ lastName.errors.maxlength.requiredLength }}
+                                </div>
+                              </div>
+                        
+                      </div>
+                    </div><!--/.row-->
+                    <div class="row">
+                      <div class="form-group col-sm-6">
+                        <label for="ccnumber">UserName</label>
+                          <input type="text" class="form-control" id="userName" placeholder="Enter your userName" ngModel name="userName"   #userName="ngModel" required>
+                          <div *ngIf="userName.touched && ! userName.valid">
+                                <div *ngIf="userName.errors.required">
+                                  Username is required
+                                </div>
+                                
+                              </div>
+                      </div>
+                      <div class="form-group col-sm-6">
+                        <label for="city">Email Address</label>
+                        <input type="text" class="form-control" id="emailaddress" placeholder="Enter your email address"  ngModel #emailaddress="ngModel" required name="emailaddress">
+                        <div *ngIf="emailaddress.touched && ! emailaddress.valid">
+                                <div *ngIf="emailaddress.errors.required">
+                                  Email Address is required
+                                </div>
+                                
+                              </div>
+                      </div>
+                    </div><!--/.row-->
+                    <div class="row">
+                      <div class="form-group col-sm-6">
+                        <label for="password">Password</label>
+                        <input type="text" class="form-control" id="password" placeholder="Enter your password"  ngModel #password="ngModel"  name="password" required>
+                        <div *ngIf="password.touched && ! password.valid">
+                                <div *ngIf="password.errors.required">
+                                  Password is required
+                                </div>
+                                
+                              </div>
+                      </div>
+                      <div class="form-group col-sm-6">
+                        <label for="UserType">UserType</label>
+                        <select class="form-control" id="ccmonth">
+                            <option value="1">accountant</option>
+                            <option value="2">academic</option>
+                            <option value="3">administrator</option>
+                            
+                        </select>
+                      </div>
+                    </div><!--/.row-->
+                    
+                  <div class="card-footer">
+                    <button type="submit"  [disabled]="!f.valid"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                   <a  [routerLink]="['/school/listing']"> <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Cancel</button></a>
+                  </div>
+                  </form>
+        </div>
+      </div><!--/.col-->
+    </div>
+    </div>

@@ -14,10 +14,13 @@
         </div>
 		
         <div class="card-body">
+          <div *ngFor="let alert of alertsDismiss">
+            <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+            </div>
           <table class="table  table-striped">
             <thead>
               <tr>
-			    <th>SNo</th>
+			          <th>SNo</th>
                 <th>Name</th>
                 <th>Email Address</th>
                 <th>Registration No</th>
@@ -28,32 +31,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-			    <td>1</td>
-                <td>Samppa Nori</td>
-                <td>Samppa Nori</td>
-                
-                <td>Member</td>
-				<td>2012/01/01</td>
-				<td>2012/01/01</td>
-                <td>
-                  <span class="badge badge-success">Active</span>
-                </td>
-				<td><i class="cui-pencil icons font-2xl mt-4"></i><i class="cui-trash icons font-2xl mt-4"></i><i class="cui-user-follow icons font-2xl mt-4"></i></td>
-              </tr>
-              
-              <tr>
-			    <td>2</td>
-                <td>Chetan Mohamed</td>
-                <td>Chetan Mohamed</td>
-                
-                <td>Admin</td>
-				<td>2012/02/01</td>
-				<td>2012/02/01</td>
-                <td>
-                  <span class="badge badge-secondary">Inactive</span>
-                </td>
-				<td><i class="cui-pencil icons font-2xl mt-4"></i><i class="cui-trash icons font-2xl mt-4"></i><i class="cui-user-follow icons font-2xl mt-4"></i></td>
+              <tr  *ngFor="let school of schoolData; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{school.name}}</td>
+                <td>{{school.email}}</td>
+                <td>{{school.registrationNumber}}</td>
+                <td>{{school.registrationDate| date:'fullDate'}}</td>
+                <td>{{school.createdAt| date}}</td>
+                <td><div *ngIf="school.isActive"><span class="badge badge-success">Active</span></div><div *ngIf="!school.isActive"><span class="badge badge-secondary">Inactive</span></div></td>
+                <td><i class="cui-pencil icons font-2xl mt-4"></i><i  (click)="deleteSchool(school._id,school.name)" style="cursor:pointer;" class="cui-trash icons font-2xl mt-4"></i>
+                  <a [routerLink]="['/school/addSchoolUser/'+school._id]"><i class="cui-user-follow icons font-2xl mt-4"></i></a></td>
               </tr>
              
             </tbody>

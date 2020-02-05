@@ -1,5 +1,6 @@
 exports.login = function(req, res) {
 	const body = req.body;
+	console.log(body);
 	Admin.findOne({ userName: body.userName }, function(err, user) {
 		if (err) {
 		  res.json({status: 100,message: "Error found"});
