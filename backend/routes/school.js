@@ -1,5 +1,6 @@
 var schoolController = require("../app/controllers/schoolController");
 School=require("../app/models/School");
+Schooluser=require("../app/models/Schooluser");
 
 var router = express.Router();
 multer = require("multer");
@@ -15,6 +16,7 @@ upload = multer({
     storage: storage
 })
 router.post("/addSchool",  upload.single('file'), schoolController.addSchool);
+router.post("/addSchoolUser", schoolController.addSchoolUser);
 router.get("/getAllSchool", schoolController.getAllSchool);
 router.delete("/delete/:id", schoolController.deleteSchool);
 module.exports = router;

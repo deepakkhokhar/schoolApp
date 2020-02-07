@@ -8,6 +8,7 @@
           </div>
           <div class="card-body">
             <form #f="ngForm" (ngSubmit)="submit(f.value)">
+              
                 <div *ngFor="let alert of alertsDismiss">
                   <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
                   </div>
@@ -90,12 +91,12 @@
                       </div>
                       <div class="form-group col-sm-6">
                         <label for="UserType">UserType</label>
-                        <select class="form-control" id="ccmonth">
-                            <option value="1">accountant</option>
-                            <option value="2">academic</option>
-                            <option value="3">administrator</option>
-                            
-                        </select>
+                        <select  class="form-control" ngModel  #usertype="ngModel"   id="usertype"   name="usertype">
+                          <option value="1">accountant</option>
+                          <option value="2">academic</option>
+                          <option value="3">administrator</option>                      
+                      </select>
+                       
                       </div>
                     </div><!--/.row-->
                     

@@ -1,4 +1,16 @@
-
+exports.addSchoolUser = function(req, res) {
+  console.log(req.body);
+  var data={ schoolId:req.body.schoolId,adminId:req.body.adminId,firstName: req.body.formvalue.firstName, lastName: req.body.formvalue.lastName, userName: req.body.formvalue.userName,
+    emailaddress:req.body.formvalue.emailaddress,password:req.body.formvalue.password,usertype:req.body.formvalue.usertype};
+    var SchoolInfoUser = new Schooluser(data);
+ 
+    // save model to database
+    SchoolInfoUser.save(function (err, data) {
+      if (err) return res.json({status: 100,message: "Error found"});
+     
+      res.json({status: 200,message: "schoolUserSaved"});
+    }); 
+}
 exports.addSchool = function(req, res) {
   var path;
   if(req.file){
