@@ -39,8 +39,9 @@
                 <td>{{school.registrationDate| date:'fullDate'}}</td>
                 <td>{{school.createdAt| date}}</td>
                 <td><div *ngIf="school.isActive"><span class="badge badge-success">Active</span></div><div *ngIf="!school.isActive"><span class="badge badge-secondary">Inactive</span></div></td>
-                <td><i class="cui-pencil icons font-2xl mt-4"></i><i  (click)="deleteSchool(school._id,school.name)" style="cursor:pointer;" class="cui-trash icons font-2xl mt-4"></i>
-                  <a [routerLink]="['/school/addSchoolUser/'+school._id]"><i class="cui-user-follow icons font-2xl mt-4"></i></a></td>
+                <td><i class="cui-pencil icons font-xl mt-2"></i><i  (click)="deleteSchool(school._id,school.name)" style="cursor:pointer;" class="cui-trash icons font-xl mt-2"></i>
+                  <a [routerLink]="['/school/schoolUser/'+school._id]"><i class="cui-user icons font-xl d-block mt-2"></i></a>
+                  <a [routerLink]="['/school/addSchoolUser/'+school._id]"><i class="cui-user-follow icons font-xl mt-2"></i></a></td>
               </tr>
              
             </tbody>

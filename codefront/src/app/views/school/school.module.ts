@@ -9,6 +9,7 @@ import { SchoolComponent } from './school.component';
 import { AddSchoolComponent } from './schooladd.component';
 import { SchoolRoutingModule } from './school-routing.module';
 import { AddSchoolUserComponent } from './schooladduser.component';
+import { SchoolUsersComponent } from './schoolusers.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     AlertModule.forRoot(),
     ButtonsModule.forRoot()
   ],
-  declarations: [ SchoolComponent,AddSchoolComponent,AddSchoolUserComponent ]
+  declarations: [ SchoolComponent,AddSchoolComponent,AddSchoolUserComponent,SchoolUsersComponent ]
 })
 export class SchoolModule { }

@@ -43,9 +43,27 @@ exports.getAllSchool=function(req, res) {
 });
 }
 
+exports.getAllSchoolUser=function(req, res) {
+  console.log(req.params.id);
+  Schooluser.find({schoolId:req.params.id}, function(err, data) {
+    if (!err){ 
+      res.json({status: 200,data: data});
+    } else {return res.json({status: 100,message: "Error found"});}
+});
+}
+
 exports.deleteSchool=function(req, res) {
   console.log(req.params.id);
   School.remove({_id:req.params.id}, function (err) {
+    if (err) return res.json({status: 100,message: "Error found"});
+    // deleted at most one tank document
+    res.json({status: 200,message: "schoolRemoved"});
+  });
+}
+
+exports.deleteSchoolUser=function(req, res) {
+  console.log(req.params.id);
+  Schooluser.remove({_id:req.params.id}, function (err) {
     if (err) return res.json({status: 100,message: "Error found"});
     // deleted at most one tank document
     res.json({status: 200,message: "schoolRemoved"});

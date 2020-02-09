@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SchoolComponent } from './school.component';
 import { AddSchoolComponent } from './schooladd.component';
 import { AddSchoolUserComponent } from './schooladduser.component';
+import { SchoolUsersComponent } from './schoolusers.component';
 const routes: Routes = [
   {
     path: '',
@@ -27,6 +28,13 @@ const routes: Routes = [
 		component: AddSchoolComponent,
         data: {
           title: 'Add School'
+        }
+      },
+      {
+        path: 'schoolUser/:id',
+		component: SchoolUsersComponent,
+        data: {
+          title: 'School Users'
         }
       },
       {
