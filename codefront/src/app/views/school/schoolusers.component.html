@@ -37,7 +37,7 @@
                 <td>{{school.createdAt| date}}</td>
                 
                 <td><div *ngIf="school.isActive"><span class="badge badge-success">Active</span></div><div *ngIf="!school.isActive"><span class="badge badge-secondary">Inactive</span></div></td>
-                <td><i class="cui-pencil icons font-xl mt-2"></i><i  (click)="deleteSchoolUser(school._id)" style="cursor:pointer;" class="cui-trash icons font-xl mt-2"></i>
+                <td><a [routerLink]="['/school/editschoolUser/'+schoolId+'/'+school._id]"><i class="cui-pencil icons font-xl mt-2"></i></a><i  (click)="deleteSchoolUser(school._id)" style="cursor:pointer;" class="cui-trash icons font-xl mt-2"></i>
                  </td>
               </tr>
              

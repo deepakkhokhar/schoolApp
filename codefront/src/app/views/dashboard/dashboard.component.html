@@ -1,13 +1,13 @@
 <div class="animated fadeIn">
   <div class="row">
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-sm-6 col-lg-4">
       <div class="card text-white bg-info">
         <div class="card-body pb-0">
           <button type="button" class="btn btn-transparent p-0 float-right">
             <i class="icon-location-pin"></i>
           </button>
-          <div class="text-value">10</div>
-          <div>Members online</div>
+          <div class="text-value">{{schoolCount}}</div>
+          <div>Schools</div>
         </div>
         <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
           <canvas baseChart class="chart"
@@ -20,12 +20,12 @@
         </div>
       </div>
     </div><!--/.col-->
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-sm-6 col-lg-4">
       <div class="card text-white bg-primary">
         <div class="card-body pb-0">
           
-          <div class="text-value">10</div>
-          <div>Members online</div>
+          <div class="text-value">0</div>
+          <div>Students</div>
         </div>
         <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
           <canvas baseChart class="chart"
@@ -38,12 +38,12 @@
         </div>
       </div>
     </div><!--/.col-->
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-sm-6 col-lg-4">
       <div class="card text-white bg-warning">
         <div class="card-body pb-0">
           
-          <div class="text-value">10</div>
-          <div>Members online</div>
+          <div class="text-value">0</div>
+          <div>Users</div>
         </div>
         <div class="chart-wrapper mt-3" style="height:70px;">
           <canvas baseChart class="chart"
@@ -56,24 +56,7 @@
         </div>
       </div>
     </div><!--/.col-->
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-danger">
-        <div class="card-body pb-0">
-          
-          <div class="text-value">10</div>
-          <div>Members online</div>
-        </div>
-        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-          <canvas baseChart class="chart"
-          [datasets]="barChart1Data"
-          [labels]="barChart1Labels"
-          [options]="barChart1Options"
-          [colors]="barChart1Colours"
-          [legend]="barChart1Legend"
-          [chartType]="barChart1Type"></canvas>
-        </div>
-      </div>
-    </div><!--/.col-->
+    
   </div><!--/.row-->
  
 </div>

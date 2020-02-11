@@ -16,9 +16,12 @@ upload = multer({
     storage: storage
 })
 router.post("/addSchool",  upload.single('file'), schoolController.addSchool);
+router.post("/updateSchoolUser", schoolController.updateSchoolUser);
 router.post("/addSchoolUser", schoolController.addSchoolUser);
 router.get("/getAllSchool", schoolController.getAllSchool);
+router.get("/getSchoolCount", schoolController.getSchoolCount);
 router.get("/getAllSchoolUser/:id", schoolController.getAllSchoolUser);
+router.get("/getSchoolUser/:userid", schoolController.getSchoolUserInformation);
 router.delete("/delete/:id", schoolController.deleteSchool);
 router.delete("/deleteuser/:id", schoolController.deleteSchoolUser);
 module.exports = router;

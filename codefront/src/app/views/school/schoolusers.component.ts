@@ -10,8 +10,10 @@ import { HttpClient } from '@angular/common/http';
 export class SchoolUsersComponent  implements OnInit {
     public schoolData;
     schoolId:any;
+    
     alertsDismiss: any = [];
     constructor(private http: HttpClient,private router:Router,private activatedRoute:ActivatedRoute) {
+      
         this.schoolId=this.activatedRoute.snapshot.paramMap.get("id");
     }
     ngOnInit() { 

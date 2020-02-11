@@ -72,6 +72,18 @@ export const routes: Routes = [
         loadChildren: () => import('./views/school/school.module').then(m => m.SchoolModule)
       },
       {
+        path: 'account',
+        loadChildren: () => import('./views/account/account.module').then(m => m.AccountModule)
+      },
+      {
+        path: 'expenses',
+        loadChildren: () => import('./views/expenses/expenses.module').then(m => m.ExpensesModule)
+      },
+      {
+        path: 'reports',
+        loadChildren: () => import('./views/reports/reports.module').then(m => m.ReportsModule)
+      },
+      {
         path: 'icons',
         loadChildren: () => import('./views/icons/icons.module').then(m => m.IconsModule)
       },

@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { HttpClient } from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   templateUrl: 'dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
-
+  alertsDismiss: any = [];
+  constructor(private http: HttpClient,private router:Router) {}
   radioModel: string = 'Month';
 
   // lineChart1
@@ -372,12 +375,19 @@ export class DashboardComponent implements OnInit {
   ];
   public brandBoxChartLegend = false;
   public brandBoxChartType = 'line';
+  public schoolCount;
 
   public random(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   ngOnInit(): void {
+    this.http.get<any>('http://localhost:3000/school/getSchoolCount').subscribe(data => {
+     console.log(data);
+     if(data.status==200){
+       this.schoolCount=data.data;
+     }
+    })
     // generate random values for mainChart
     for (let i = 0; i <= this.mainChartElements; i++) {
       this.mainChartData1.push(this.random(50, 200));

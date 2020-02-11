@@ -22,6 +22,18 @@ export const navItems: INavData[] = [
         icon: 'icon-puzzle'
       }
 	  ]
+  },{
+    name: 'Account',
+    url: '/account',
+    icon: 'icon-speedometer'
+  },{
+    name: 'Expenses',
+    url: '/expenses',
+    icon: 'icon-speedometer'
+  },{
+    name: 'Reports',
+    url: '/reports',
+    icon: 'icon-speedometer'
   }
   
 ];

@@ -69,3 +69,29 @@ exports.deleteSchoolUser=function(req, res) {
     res.json({status: 200,message: "schoolRemoved"});
   });
 }
+
+exports.getSchoolCount=function(req, res) {
+  School.count({}, function (err,data) {
+    if (err) return res.json({status: 100,message: "Error found"});
+    // deleted at most one tank document
+    res.json({status: 200,data: data});
+  });
+} 
+
+exports.getSchoolUserInformation=function(req, res) {
+  
+  Schooluser.findById(req.params.userid, function(err, data) {
+    if (!err){ 
+      res.json({status: 200,data: data});
+    } else {return res.json({status: 100,message: "Error found"});}
+});
+}
+
+exports.updateSchoolUser=function(req, res) {
+  
+  Schooluser.findOneAndUpdate({_id:req.body.schooluserId}, req.body.formvalue, {upsert: true}, function(err, doc) {
+    if (err) return res.json({status: 100,message: "Error found"});
+    // deleted at most one tank document
+    res.json({status: 200,message: "schoolUpdated"});
+});
+}
