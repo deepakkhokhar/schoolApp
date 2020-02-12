@@ -3,7 +3,7 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-header">
-          <strong>Add School</strong>
+          <strong><span *ngIf=schoolId>Update School</span><span *ngIf=!schoolId>Add School</span></strong>
           <small>Form</small>
         </div>
         <div class="card-body">
@@ -15,7 +15,7 @@
             <div class="col-sm-12">
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text"  id="fullName" placeholder="Enter your name" ngModel name="fullName" class="form-control" #fullName="ngModel" minlength="3" maxlength="30"  required>
+                <input type="text"  id="fullName" placeholder="Enter your name"  [(ngModel)]='fullNameVal' name="fullName" class="form-control" #fullName="ngModel" minlength="3" maxlength="30"  required>
               </div>
 			  
 			  <div *ngIf="fullName.touched && ! fullName.valid">
@@ -37,7 +37,7 @@
 		  <div class="row">
             <div class="form-group col-sm-6">
               <label for="ccnumber">Registration Number</label>
-                <input type="text" class="form-control" id="regNo" placeholder="Enter your registration name" ngModel name="regNo"   #regNo="ngModel" required>
+                <input type="text" class="form-control" id="regNo" placeholder="Enter your registration name"  [(ngModel)]='regNoVal' name="regNo"   #regNo="ngModel" required>
 				<div *ngIf="regNo.touched && ! regNo.valid">
 					  <div *ngIf="regNo.errors.required">
 						Registration Number is required
@@ -47,7 +47,7 @@
             </div>
             <div class="form-group col-sm-6">
               <label for="ccnumber">Registration Date</label>
-              <input class="form-control" id="regDate" type="date" name="regDate" placeholder="date"  ngModel #regDate="ngModel" required>
+              <input class="form-control" id="regDate" type="date" name="regDate" placeholder="date"  [(ngModel)]='regDateVal' #regDate="ngModel" required>
 			  <div *ngIf="regDate.touched && ! regDate.valid">
 					  <div *ngIf="regDate.errors.required">
 						Registration Date is required
@@ -59,7 +59,7 @@
 		  <div class="row">
             <div class="form-group col-sm-6">
               <label for="phonenumber">Phone Number</label>
-              <input type="text" class="form-control" id="phonenumber" placeholder="Enter your phone number"  ngModel #phonenumber="ngModel"  name="phonenumber" required>
+              <input type="text" class="form-control" id="phonenumber" placeholder="Enter your phone number"  [(ngModel)]='phonenumberVal' #phonenumber="ngModel"  name="phonenumber" required>
 			  <div *ngIf="phonenumber.touched && ! phonenumber.valid">
 					  <div *ngIf="phonenumber.errors.required">
 						Phone Number is required
@@ -69,7 +69,7 @@
             </div>
             <div class="form-group col-sm-6">
               <label for="city">Email Address</label>
-              <input type="text" class="form-control" id="emailaddress" placeholder="Enter your email address"  ngModel #emailaddress="ngModel" required name="emailaddress">
+              <input type="text" class="form-control" id="emailaddress" placeholder="Enter your email address"  [(ngModel)]='emailaddressVal' #emailaddress="ngModel" required name="emailaddress">
 			  <div *ngIf="emailaddress.touched && ! emailaddress.valid">
 					  <div *ngIf="emailaddress.errors.required">
 						Email Address is required
@@ -81,7 +81,7 @@
 		  <div class="row">
             <div class="form-group col-sm-6">
               <label for="street">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="Enter address"  ngModel #address="ngModel" required name="address">
+              <input type="text" class="form-control" id="address" placeholder="Enter address"   [(ngModel)]='addressVal'  #address="ngModel" required name="address">
 			  <div *ngIf="address.touched && ! address.valid">
 					  <div *ngIf="address.errors.required">
 						Address is required
@@ -91,7 +91,7 @@
             </div>
             <div class="form-group col-sm-6">
               <label for="city">City</label>
-              <input type="text" class="form-control" id="city" placeholder="Enter your city"  ngModel #city="ngModel" required name="city">
+              <input type="text" class="form-control" id="city" placeholder="Enter your city"  [(ngModel)]='cityVal'  #city="ngModel" required name="city">
 			  <div *ngIf="city.touched && ! city.valid">
 					  <div *ngIf="city.errors.required">
 						City is required
@@ -104,7 +104,7 @@
           <div class="row">
             <div class="form-group col-sm-6">
             <label for="country">Country</label>
-            <input type="text" class="form-control" id="country" placeholder="Country name"  ngModel #country="ngModel" required name="country">
+            <input type="text" class="form-control" id="country" placeholder="Country name"   [(ngModel)]='countryVal'  #country="ngModel" required name="country">
 			<div *ngIf="country.touched && ! country.valid">
 					  <div *ngIf="country.errors.required">
 						Country is required

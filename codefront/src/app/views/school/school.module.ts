@@ -11,6 +11,7 @@ import { SchoolRoutingModule } from './school-routing.module';
 import { AddSchoolUserComponent } from './schooladduser.component';
 import { SchoolUsersComponent } from './schoolusers.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { DatePipe } from '@angular/common';
 @NgModule({
   imports: [
      CommonModule,FormsModule, HttpModule,
@@ -18,6 +19,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     AlertModule.forRoot(),
     ButtonsModule.forRoot()
   ],
-  declarations: [ SchoolComponent,AddSchoolComponent,AddSchoolUserComponent,SchoolUsersComponent ]
+  declarations: [ SchoolComponent,AddSchoolComponent,AddSchoolUserComponent,SchoolUsersComponent ],
+  providers: [DatePipe]
 })
 export class SchoolModule { }

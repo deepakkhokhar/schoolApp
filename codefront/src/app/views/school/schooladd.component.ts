@@ -1,17 +1,52 @@
-import {Component,ChangeDetectorRef} from '@angular/core';
-import {Router} from '@angular/router';
+import {Component,ViewChild,ChangeDetectorRef, OnInit} from '@angular/core';
+import {Router,ActivatedRoute} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import { DatePipe } from '@angular/common';
 @Component({
   templateUrl: 'schooladd.component.html'
 })
-export class AddSchoolComponent {
-  
+export class AddSchoolComponent implements OnInit {
+  schoolId:any;
   public imagePath;
   imgURL: any;
   public fd= new FormData();
-  constructor(private http: HttpClient,private router:Router,private cd: ChangeDetectorRef) {}
   alertsDismiss: any = [];
+  fullNameVal:string;
+  regNoVal:string;
+  regDateVal:any;
+  emailaddressVal:any;
+  addressVal:any;
+  cityVal:any;
+  countryVal:any;
+  
+  phonenumberVal:any;
+  
+  constructor(public datepipe: DatePipe,private http: HttpClient,private router:Router,private cd: ChangeDetectorRef,private activatedRoute:ActivatedRoute) {
+    this.schoolId=this.activatedRoute.snapshot.paramMap.get("id");
+  }
+  ngOnInit(): void {
+      
+    if(this.schoolId){
+    
+    this.http.get<any>('http://localhost:3000/school/getSchool/'+this.schoolId).subscribe(data => {
+     
+     if(data.status==200){
+      this.regDateVal=this.datepipe.transform(data.data.registrationDate, 'yyyy-MM-dd');
+      this.fullNameVal=data.data.name;
+       this.regNoVal=data.data.registrationNumber;
+       
+       this.phonenumberVal=data.data.phoneNumber;
+       this.emailaddressVal=data.data.email;
+       this.addressVal=data.data.address;
+       this.cityVal=data.data.city;
+       this.countryVal=data.data.country;
+       this.imgURL=data.data.logo;
+      
+     }
+    })
+  } 
+  }
+  
   
 
   preview(files) {
@@ -38,6 +73,7 @@ export class AddSchoolComponent {
   }
 
   submit(value: any) {
+
     var retrievedObject = localStorage.getItem('userInfo');
     var user=JSON.parse(retrievedObject);
     
@@ -59,16 +95,17 @@ export class AddSchoolComponent {
     this.fd.append('city',value.city);
     this.fd.append('country',value.country);
     this.fd.append('adminId',user._id);
-    this.http.post<any>('http://localhost:3000/school/addSchool', this.fd).subscribe(data => {
+    if(this.schoolId){
+      this.http.post<any>('http://localhost:3000/school/updateSchool/'+this.schoolId, this.fd).subscribe(data => {
 		    if(data.status==200){
           this.alertsDismiss.push({
             type: 'success',
-            msg: `School created successfully`,
+            msg: `School updated successfully`,
             timeout: 10000
           });
-          setTimeout(function(){
+          
           this.router.navigate(['school']);
-        }, 8000);
+        
         }
         },error=>{
       console.log("Error", error); 
@@ -78,6 +115,28 @@ export class AddSchoolComponent {
         timeout: 5000
       });
 		}) 
+    }else{
+      this.http.post<any>('http://localhost:3000/school/addSchool', this.fd).subscribe(data => {
+		    if(data.status==200){
+          this.alertsDismiss.push({
+            type: 'success',
+            msg: `School created successfully`,
+            timeout: 10000
+          });
+          
+          this.router.navigate(['school']);
+        
+        }
+        },error=>{
+      console.log("Error", error); 
+      this.alertsDismiss.push({
+        type: 'danger',
+        msg: error,
+        timeout: 5000
+      });
+		}) 
+    }
+    
   }
 
   

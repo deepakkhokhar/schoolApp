@@ -95,3 +95,32 @@ exports.updateSchoolUser=function(req, res) {
     res.json({status: 200,message: "schoolUpdated"});
 });
 }
+
+exports.getSchoolInformation=function(req, res) {
+  
+  School.findById(req.params.schoolId, function(err, data) {
+    if (!err){ 
+      res.json({status: 200,data: data});
+    } else {return res.json({status: 100,message: "Error found"});}
+});
+}
+exports.updateSchool=function(req, res) {
+  console.log(req.params.id);
+  console.log(req.body);
+  var path;
+  if(req.file){
+  
+    path = 'http://localhost:3000/upload/'+req.file.originalname;
+  }else{
+    path='';
+  }
+  var data={ name: req.body.fullName, registrationNumber: req.body.regNo, country: req.body.country,
+    city:req.body.city,registrationDate:req.body.regDate,phoneNumber:req.body.phonenumber,email:req.body.emailaddress,
+    address:req.body.address,logo:path,adminId:req.body.adminId};
+  
+    School.findOneAndUpdate({_id:req.params.id}, data, {upsert: true}, function(err, doc) {
+    if (err) return res.json({status: 100,message: "Error found"});
+    // deleted at most one tank document
+    res.json({status: 200,message: "schoolUpdated"});
+});
+}

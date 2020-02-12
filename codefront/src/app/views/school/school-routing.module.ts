@@ -31,6 +31,13 @@ const routes: Routes = [
         }
       },
       {
+        path: 'editSchool/:id',
+		component: AddSchoolComponent,
+        data: {
+          title: 'Update School'
+        }
+      },
+      {
         path: 'editschoolUser/:id/:userid',
 		component: AddSchoolUserComponent,
         data: {
