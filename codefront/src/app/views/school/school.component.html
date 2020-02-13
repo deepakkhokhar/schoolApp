@@ -23,8 +23,8 @@
 			          <th>SNo</th>
                 <th>Name</th>
                 <th>Email Address</th>
-                <th>Registration No</th>
-                <th>Registration Date</th>
+                <th>Amount</th>
+                
                 <th>Created Date</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -35,8 +35,8 @@
                 <td>{{i+1}}</td>
                 <td>{{school.name}}</td>
                 <td>{{school.email}}</td>
-                <td>{{school.registrationNumber}}</td>
-                <td>{{school.registrationDate| date:'fullDate'}}</td>
+                
+                <td>{{school.amount}}</td>
                 <td>{{school.createdAt| date}}</td>
                 <td><div *ngIf="school.isActive"><span class="badge badge-success">Active</span></div><div *ngIf="!school.isActive"><span class="badge badge-secondary">Inactive</span></div></td>
                 <td>

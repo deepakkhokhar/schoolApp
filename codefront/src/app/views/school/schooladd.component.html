@@ -12,7 +12,7 @@
         <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
         </div>
           <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-6">
               <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text"  id="fullName" placeholder="Enter your name"  [(ngModel)]='fullNameVal' name="fullName" class="form-control" #fullName="ngModel" minlength="3" maxlength="30"  required>
@@ -33,8 +33,6 @@
 					</div>
 			  
             </div>
-          </div><!--/.row-->
-		  <div class="row">
             <div class="form-group col-sm-6">
               <label for="ccnumber">Registration Number</label>
                 <input type="text" class="form-control" id="regNo" placeholder="Enter your registration name"  [(ngModel)]='regNoVal' name="regNo"   #regNo="ngModel" required>
@@ -45,6 +43,9 @@
 					  
 					</div>
             </div>
+          </div><!--/.row-->
+		  <div class="row">
+            
             <div class="form-group col-sm-6">
               <label for="ccnumber">Registration Date</label>
               <input class="form-control" id="regDate" type="date" name="regDate" placeholder="date"  [(ngModel)]='regDateVal' #regDate="ngModel" required>
@@ -54,6 +55,16 @@
 					  </div>
 					  
 					</div>
+            </div>
+            <div class="form-group col-sm-6">
+              <label for="ccnumber">Amount</label>
+              <input class="form-control" id="amount" type="number" name="amount" placeholder="Enter Amount"  [(ngModel)]='amountVal' #amount="ngModel" required>
+            <div *ngIf="amount.touched && ! amount.valid">
+                <div *ngIf="amount.errors.required">
+                Amount is required
+                </div>
+                
+              </div>
             </div>
           </div><!--/.row-->
 		  <div class="row">
@@ -112,11 +123,23 @@
 					  
 					</div>
           </div>
-		  <div class="form-group col-sm-6">
-              <label for="companylogo">School logo</label><br>
-              <input type="file"  accept='image/*' (change)="preview(file.files)" #file>
-              <img [src]="imgURL" height="200" *ngIf="imgURL">
+          <div class="form-group col-sm-6">
+            <label for="country">Active</label>
+            <div>
+              <label class="switch switch-3d switch-primary">
+                <input type="checkbox" class="switch-input"  id="status"  [(ngModel)]='statusVal'  #status="ngModel"  name="status">
+                <span class="switch-slider"></span>
+              </label>
             </div>
+            
+            </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-12">
+            <label for="companylogo">School logo</label><br>
+            <input type="file"  accept='image/*' (change)="preview(file.files)" #file>
+            <img [src]="imgURL" height="200" *ngIf="imgURL">
+          </div>
         </div>
 		<div class="card-footer">
           <button type="submit"  [disabled]="!f.valid"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>

@@ -18,14 +18,15 @@ export class AddSchoolComponent implements OnInit {
   addressVal:any;
   cityVal:any;
   countryVal:any;
-  
+  statusVal:boolean;
   phonenumberVal:any;
+  amountVal:any;
   
   constructor(public datepipe: DatePipe,private http: HttpClient,private router:Router,private cd: ChangeDetectorRef,private activatedRoute:ActivatedRoute) {
     this.schoolId=this.activatedRoute.snapshot.paramMap.get("id");
   }
   ngOnInit(): void {
-      
+    this.statusVal=true;  
     if(this.schoolId){
     
     this.http.get<any>('http://localhost:3000/school/getSchool/'+this.schoolId).subscribe(data => {
@@ -41,7 +42,8 @@ export class AddSchoolComponent implements OnInit {
        this.cityVal=data.data.city;
        this.countryVal=data.data.country;
        this.imgURL=data.data.logo;
-      
+       this.statusVal=data.data.isActive;
+       this.amountVal=data.data.amount;
      }
     })
   } 
@@ -73,7 +75,6 @@ export class AddSchoolComponent implements OnInit {
   }
 
   submit(value: any) {
-
     var retrievedObject = localStorage.getItem('userInfo');
     var user=JSON.parse(retrievedObject);
     
@@ -86,6 +87,8 @@ export class AddSchoolComponent implements OnInit {
     this.fd.delete('address');
     this.fd.delete('city');
     this.fd.delete('country');
+    this.fd.delete('amount');
+    this.fd.delete('status');
     this.fd.append('fullName',value.fullName);
     this.fd.append('regNo',value.regNo);
     this.fd.append('regDate',value.regDate);
@@ -94,6 +97,8 @@ export class AddSchoolComponent implements OnInit {
     this.fd.append('address',value.address);
     this.fd.append('city',value.city);
     this.fd.append('country',value.country);
+    this.fd.append('amount',value.amount);
+    this.fd.append('status',value.status);
     this.fd.append('adminId',user._id);
     if(this.schoolId){
       this.http.post<any>('http://localhost:3000/school/updateSchool/'+this.schoolId, this.fd).subscribe(data => {

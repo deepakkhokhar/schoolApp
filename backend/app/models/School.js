@@ -12,6 +12,7 @@ var School = new Schema({
     city:String,
     phoneNumber:String,
     address:String,
+    amount:Number,
 	isDeleted:{type:Boolean,default:false},
     isActive:{type:Boolean,default:true},
     adminId:{type: mongoose.Schema.Types.ObjectId,ref:'Admin'}

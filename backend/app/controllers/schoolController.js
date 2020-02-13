@@ -12,18 +12,24 @@ exports.addSchoolUser = function(req, res) {
     }); 
 }
 exports.addSchool = function(req, res) {
-  var path;
+  var path,status;
+  if(req.body.status=="undefined" || req.body.status==undefined){
+    status=false;
+  }else{
+    status=req.body.status;
+  } 
   if(req.file){
   
     path = 'http://localhost:3000/upload/'+req.file.originalname;
   }else{
     path='';
   }
+  
   var data={ name: req.body.fullName, registrationNumber: req.body.regNo, country: req.body.country,
     city:req.body.city,registrationDate:req.body.regDate,phoneNumber:req.body.phonenumber,email:req.body.emailaddress,
-    address:req.body.address,logo:path,adminId:req.body.adminId};
+    address:req.body.address,logo:path,adminId:req.body.adminId,amount:req.body.amount,isActive:status};
   // Call your database method here with filename and path
- console.log(data);
+ 
  var SchoolInfo = new School(data);
  
     // save model to database
@@ -116,7 +122,7 @@ exports.updateSchool=function(req, res) {
   }
   var data={ name: req.body.fullName, registrationNumber: req.body.regNo, country: req.body.country,
     city:req.body.city,registrationDate:req.body.regDate,phoneNumber:req.body.phonenumber,email:req.body.emailaddress,
-    address:req.body.address,logo:path,adminId:req.body.adminId};
+    address:req.body.address,logo:path,adminId:req.body.adminId,amount:req.body.amount,isActive:req.body.status};
   
     School.findOneAndUpdate({_id:req.params.id}, data, {upsert: true}, function(err, doc) {
     if (err) return res.json({status: 100,message: "Error found"});
