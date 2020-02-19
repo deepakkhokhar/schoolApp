@@ -1,24 +1,61 @@
 <div class="animated fadeIn">
-
-    <div class="row">
-     
-      <div class="col-lg-12">
-        <div class="card">
-          <div class="card-header">
-            <i class="fa fa-align-justify"></i> School Expenses
-            <div class="card-header-actions">
-            
-          </div>
-          </div>
+  <div class="row">
+   
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Expenses 
+		  <div class="card-header-actions">
+          <a    [routerLink]="['/expenses/add']">
+            <small class="text-muted">Add Expense</small>
+          </a>
+        </div>
+        </div>
+		
+        <div class="card-body">
+          <div *ngFor="let alert of alertsDismiss">
+            <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+        </div>
+          <table class="table  table-striped">
+            <thead>
+              <tr>
+			          <th>SNo</th>
+                <th>Name</th>
+                <th>Category Name</th>
+                <th>School Name</th>
+                <th>Amount</th>
+                <th>Payee</th>
+                <th>Payer</th>
+                
+                <th>Created Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr  *ngFor="let expense of expenseData; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{expense.name}}</td>
+                <td>{{expense.expensecategoryId.name}}</td>
+                <td>{{expense.schoolId.name}}</td>
+                <td>{{expense.amount}}</td>
+                <td>{{expense.payee}}</td>
+                
+                <td>{{expense.payer}}</td>
+                <td>{{expense.createdAt| date}}</td>
+                
+                <td>
+                  <a [routerLink]="['/expenses/edit/',expense._id]"><i class="cui-pencil icons font-xl mt-2"></i></a>
+                  <i  (click)="deleteExpense(expense._id,expense.name)" style="cursor:pointer;" class="cui-trash icons font-xl mt-2"></i>
+                 </td>
+              </tr>
+             
+            </tbody>
+          </table>
           
-          <div class="card-body">
-            Coming Soon
-            
-          </div>
         </div>
       </div>
-     
     </div>
    
   </div>
-  
+ 
+</div>

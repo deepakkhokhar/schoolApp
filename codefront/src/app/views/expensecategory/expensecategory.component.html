@@ -1,0 +1,53 @@
+<div class="animated fadeIn">
+
+  <div class="row">
+   
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Expenses Category
+		  <div class="card-header-actions">
+          <a   [routerLink]="['/expensecategory/add']">
+            <small class="text-muted">Add Expense Category</small>
+          </a>
+        </div>
+        </div>
+		
+        <div class="card-body">
+          <div *ngFor="let alert of alertsDismiss">
+            <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+            </div>
+            
+          <table class="table  table-striped">
+            <thead>
+              <tr>
+			          <th>SNo</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Created Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr  *ngFor="let expenseCategory of expenseCategoryData; let i = index">
+                
+                <td>{{i+1}}</td>
+                <td>{{expenseCategory.name}}</td>
+                <td>{{expenseCategory.quantity}}</td>
+                <td>{{expenseCategory.createdAt| date}}</td>
+                
+                <td>
+                  <a [routerLink]="['/expensecategory/edit/',expenseCategory._id]"><i class="cui-pencil icons font-xl mt-2"></i></a>
+                  <i  (click)="deleteExpenseCategory(expenseCategory._id,expenseCategory.name)" style="cursor:pointer;" class="cui-trash icons font-xl mt-2"></i>
+                 </td>
+              </tr>
+             
+            </tbody>
+          </table>
+          
+        </div>
+      </div>
+    </div>
+   
+  </div>
+

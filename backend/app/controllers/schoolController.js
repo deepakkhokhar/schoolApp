@@ -27,7 +27,7 @@ exports.addSchool = function(req, res) {
   
   var data={ name: req.body.fullName, registrationNumber: req.body.regNo, country: req.body.country,
     city:req.body.city,registrationDate:req.body.regDate,phoneNumber:req.body.phonenumber,email:req.body.emailaddress,
-    address:req.body.address,logo:path,adminId:req.body.adminId,amount:req.body.amount,isActive:status};
+    address:req.body.address,logo:path,adminId:req.body.adminId,amount:req.body.amount,isActive:status,pay:req.body.pay};
   // Call your database method here with filename and path
  
  var SchoolInfo = new School(data);
@@ -122,7 +122,7 @@ exports.updateSchool=function(req, res) {
   }
   var data={ name: req.body.fullName, registrationNumber: req.body.regNo, country: req.body.country,
     city:req.body.city,registrationDate:req.body.regDate,phoneNumber:req.body.phonenumber,email:req.body.emailaddress,
-    address:req.body.address,logo:path,adminId:req.body.adminId,amount:req.body.amount,isActive:req.body.status};
+    address:req.body.address,logo:path,adminId:req.body.adminId,amount:req.body.amount,isActive:req.body.status,pay:req.body.pay};
   
     School.findOneAndUpdate({_id:req.params.id}, data, {upsert: true}, function(err, doc) {
     if (err) return res.json({status: 100,message: "Error found"});

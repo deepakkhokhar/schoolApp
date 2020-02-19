@@ -21,12 +21,13 @@ export class AddSchoolComponent implements OnInit {
   statusVal:boolean;
   phonenumberVal:any;
   amountVal:any;
-  
+  payVal:boolean;
   constructor(public datepipe: DatePipe,private http: HttpClient,private router:Router,private cd: ChangeDetectorRef,private activatedRoute:ActivatedRoute) {
     this.schoolId=this.activatedRoute.snapshot.paramMap.get("id");
   }
   ngOnInit(): void {
     this.statusVal=true;  
+    this.payVal=false;
     if(this.schoolId){
     
     this.http.get<any>('http://localhost:3000/school/getSchool/'+this.schoolId).subscribe(data => {
@@ -44,6 +45,7 @@ export class AddSchoolComponent implements OnInit {
        this.imgURL=data.data.logo;
        this.statusVal=data.data.isActive;
        this.amountVal=data.data.amount;
+       this.payVal=data.data.pay;
      }
     })
   } 
@@ -89,6 +91,7 @@ export class AddSchoolComponent implements OnInit {
     this.fd.delete('country');
     this.fd.delete('amount');
     this.fd.delete('status');
+    this.fd.delete('pay');
     this.fd.append('fullName',value.fullName);
     this.fd.append('regNo',value.regNo);
     this.fd.append('regDate',value.regDate);
@@ -100,6 +103,7 @@ export class AddSchoolComponent implements OnInit {
     this.fd.append('amount',value.amount);
     this.fd.append('status',value.status);
     this.fd.append('adminId',user._id);
+    this.fd.append('pay',value.pay);
     if(this.schoolId){
       this.http.post<any>('http://localhost:3000/school/updateSchool/'+this.schoolId, this.fd).subscribe(data => {
 		    if(data.status==200){

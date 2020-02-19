@@ -15,6 +15,7 @@ var School = new Schema({
     amount:Number,
 	isDeleted:{type:Boolean,default:false},
     isActive:{type:Boolean,default:true},
+    pay:{type:Boolean,default:false},
     adminId:{type: mongoose.Schema.Types.ObjectId,ref:'Admin'}
 },{
     timestamps: true

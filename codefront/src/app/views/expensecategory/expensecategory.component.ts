@@ -4,25 +4,24 @@ import { HttpClient } from '@angular/common/http';
 
 
 @Component({
-  templateUrl: 'expenses.component.html'
+  templateUrl: 'expensecategory.component.html'
 })
-export class ExpensesComponent  implements OnInit {
+export class ExpenseCategoryComponent  implements OnInit {
   
-  public expenseData;
+  public expenseCategoryData;
   alertsDismiss: any = [];
   constructor(private http: HttpClient,private router:Router) {}
   ngOnInit() { 
-    
-    this.http.get<any>('http://localhost:3000/expense/getAllExpense').subscribe(data => {
+    this.http.get<any>('http://localhost:3000/expensecategory/getAllExpense').subscribe(data => {
      console.log(data);
      if(data.status==200){
-       this.expenseData=data.data;
+       this.expenseCategoryData=data.data;
      }
     })
    }
-   deleteExpense(_id: string,name:string) {
+   deleteExpenseCategory(_id: string,name:string) {
     if(confirm("Are you sure to delete "+name+"?")) {
-      this.http.delete<any>('http://localhost:3000/expense/delete/'+_id).subscribe(data => {
+      this.http.delete<any>('http://localhost:3000/expensecategory/delete/'+_id).subscribe(data => {
 		  console.log(data);
 			if(data.status==100){
 			
@@ -34,7 +33,7 @@ export class ExpensesComponent  implements OnInit {
 			}else{
 				this.alertsDismiss.push({
 				  type: 'success',
-				  msg: `Expense Removed Sucessfully.`,
+				  msg: `ExpenseCategory Removed Sucessfully.`,
 				  timeout: 5000
 				});
 				

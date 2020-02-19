@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ExpensesComponent } from './expenses.component';
-import { ExpenseAddComponent } from './expenseadd.component';
+import { ExpenseCategoryComponent } from './expensecategory.component';
+import { ExpenseCategoryAddComponent } from './expensecategoryadd.component';
 const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Expenses'
+      title: 'Expense Category'
     },
     children: [
       {
@@ -16,23 +16,23 @@ const routes: Routes = [
       },
       {
         path: 'listing',
-        component: ExpensesComponent,
+        component: ExpenseCategoryComponent,
         data: {
-          title: 'Expense listing'
+          title: 'Expense Category listing'
         }
       },
       {
         path: 'add',
-		    component: ExpenseAddComponent,
+		component: ExpenseCategoryAddComponent,
         data: {
-          title: 'Add Expense'
+          title: 'Add Expense Category'
         }
       },
       {
         path: 'edit/:id',
-		    component: ExpenseAddComponent,
+		component: ExpenseCategoryAddComponent,
         data: {
-          title: 'Update Expense'
+          title: 'Update Expense Category'
         }
       }
     ]
@@ -43,4 +43,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ExpensesRoutingModule {}
+export class ExpenseCategoryRoutingModule {}

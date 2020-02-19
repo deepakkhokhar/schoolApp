@@ -5,17 +5,17 @@ import { FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
 
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
-import { ExpensesRoutingModule } from './expenses-routing.module';
+import { ExpenseCategoryRoutingModule } from './expensecategory-routing.module';
 import { AlertModule } from 'ngx-bootstrap/alert';
-import { ExpensesComponent } from './expenses.component';
-import { ExpenseAddComponent } from './expenseadd.component';
+import { ExpenseCategoryComponent } from './expensecategory.component';
+import { ExpenseCategoryAddComponent } from './expensecategoryadd.component';
 @NgModule({
   imports: [
      CommonModule,FormsModule, HttpModule,
-     ExpensesRoutingModule,
+     ExpenseCategoryRoutingModule,
     AlertModule.forRoot(),
     ButtonsModule.forRoot()
   ],
-  declarations: [ ExpensesComponent,ExpenseAddComponent ]
+  declarations: [ ExpenseCategoryComponent,ExpenseCategoryAddComponent ]
 })
-export class ExpensesModule { }
+export class ExpenseCategoryModule { }

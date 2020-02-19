@@ -26,10 +26,39 @@ export const navItems: INavData[] = [
     name: 'Account',
     url: '/account',
     icon: 'icon-speedometer'
+  },
+  {
+    name: 'Expense Category',
+    url: '/expensecategory',
+    icon: 'icon-puzzle',
+    children: [
+      {
+        name: 'Category listing',
+        url: '/expensecategory/listing',
+        icon: 'icon-puzzle'
+      },
+      {
+        name: 'Add Category',
+        url: '/expensecategory/add',
+        icon: 'icon-puzzle'
+      }
+	  ]
   },{
     name: 'Expenses',
     url: '/expenses',
-    icon: 'icon-speedometer'
+    icon: 'icon-speedometer',
+    children: [
+      {
+        name: 'Expense listing',
+        url: '/expenses/listing',
+        icon: 'icon-puzzle'
+      },
+      {
+        name: 'Add Expense',
+        url: '/expenses/add',
+        icon: 'icon-puzzle'
+      }
+	  ]
   },{
     name: 'Reports',
     url: '/reports',

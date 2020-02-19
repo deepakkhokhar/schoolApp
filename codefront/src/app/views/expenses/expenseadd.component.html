@@ -1,0 +1,133 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <strong>Add Expense</strong>
+            <small>Form</small>
+          </div>
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="submit(f.value)">
+                <div *ngFor="let alert of alertsDismiss">
+                    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="Name">Name</label>
+                        <input type="text"  id="name" placeholder="Enter your Name"  [(ngModel)]='nameVal' name="name" class="form-control" #name="ngModel" minlength="3" maxlength="30"  required >
+                      </div>
+                      
+                      <div *ngIf="name.touched && ! name.valid">
+                              <div *ngIf="name.errors.required">
+                                Expense Name is required
+                              </div>
+                              <div *ngIf="name.errors.minlength">
+                                Expense Name minimum length is
+                                {{ name.errors.minlength.requiredLength }}
+                              </div>
+                              <div *ngIf="name.errors.maxlength">
+                                Expense Name maximum length is
+                                {{ name.errors.maxlength.requiredLength }}
+                              </div>
+                            </div>
+                      
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="UserType">School</label>
+                        <select  class="form-control" [(ngModel)]='schoolVal'  #schoolId="ngModel"   id="schoolId"   name="schoolId">
+                            <option
+                            *ngFor="let school of schoolData; index as i"
+                            value="{{ school._id }}"
+                        >
+                            {{ school.name }}
+                        </option>                     
+                      </select>
+                       
+                      </div>
+                    
+                  </div><!--/.row-->
+                  <div class="row">
+                    
+                    <div class="form-group col-sm-6">
+                      <label for="UserType">Category</label>
+                      <select class="form-control"   [(ngModel)]="categoryVal"  #expensecategoryId="ngModel"   id="expensecategoryId"   name="expensecategoryId">
+                        <option
+                        *ngFor="let expenseCategory of expenseCategoryData; index as i"
+                         value="{{ expenseCategory._id }}"
+                    >
+                        {{ expenseCategory.name }}
+                    </option>
+                      </select>                     
+                    
+                     
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="Quantity">Amount</label>
+                          <input type="number"  id="amount" placeholder="Enter your Amount" [(ngModel)]='amountVal' name="amount" class="form-control" #amount="ngModel"   required>
+                        </div>
+                        
+                        <div *ngIf="amount.touched && ! amount.valid">
+                                <div *ngIf="amount.errors.required">
+                                  Amount is required
+                                </div>
+                        </div>
+                        
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="firstname">Payer</label>
+                        <input type="text"  id="payer" placeholder="Enter your Payer"  [(ngModel)]='payerVal' name="payer" class="form-control" #payer="ngModel"  required >
+                      </div>
+                      
+                      <div *ngIf="payer.touched && ! payer.valid">
+                              <div *ngIf="payer.errors.required">
+                                Payer is required
+                              </div>
+                              
+                       </div>
+                      
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="firstname">Payee</label>
+                          <input type="text"  id="payee" placeholder="Enter your Payee"  [(ngModel)]='payeeVal' name="payee" class="form-control" #payee="ngModel"  required >
+                        </div>
+                        
+                        <div *ngIf="payee.touched && ! payee.valid">
+                                <div *ngIf="payee.errors.required">
+                                  Payee is required
+                                </div>
+                                
+                         </div>
+                        
+                      </div>
+                  </div><!--/.row-->
+                  
+                  <div class="row">
+                    <div class="form-group col-sm-12">
+                      <label for="description">Description</label>
+                      <textarea id="textarea-input"  rows="9" class="form-control" [(ngModel)]='descriptionVal' id="description" placeholder="Enter your description"   #description="ngModel"  name="description" required></textarea>
+                      
+                      <div *ngIf="description.touched && ! description.valid">
+                              <div *ngIf="description.errors.required">
+                                  Description is required
+                              </div>
+                              
+                            </div>
+                    </div>
+                    
+                  </div><!--/.row-->
+                  <div class="card-footer">
+                    <button type="submit"  [disabled]="!f.valid"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                   <a  [routerLink]="['/expenses/listing']" > <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Cancel</button></a>
+                  </div>
+            </form>
+        </div>
+      </div><!--/.col-->
+    </div>
+    </div>
+    </div>

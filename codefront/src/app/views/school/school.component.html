@@ -27,6 +27,7 @@
                 
                 <th>Created Date</th>
                 <th>Status</th>
+                
                 <th>Action</th>
               </tr>
             </thead>
@@ -40,6 +41,7 @@
                 <td>{{school.createdAt| date}}</td>
                 <td><div *ngIf="school.isActive"><span class="badge badge-success">Active</span></div><div *ngIf="!school.isActive"><span class="badge badge-secondary">Inactive</span></div></td>
                 <td>
+                  <span *ngIf="!school.pay">Pay</span><span *ngIf="school.pay">Paid</span>
                   <a [routerLink]="['/school/editSchool/',school._id]"><i class="cui-pencil icons font-xl mt-2"></i></a>
                   <i  (click)="deleteSchool(school._id,school.name)" style="cursor:pointer;" class="cui-trash icons font-xl mt-2"></i>
                   <a [routerLink]="['/school/schoolUser/'+school._id]"><i class="cui-user icons font-xl d-block mt-2"></i></a>
