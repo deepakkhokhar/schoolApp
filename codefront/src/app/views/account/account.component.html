@@ -7,12 +7,51 @@
           <div class="card-header">
             <i class="fa fa-align-justify"></i> School Account
             <div class="card-header-actions">
-            
+              <a   [routerLink]="['/account/add']">
+                <small class="text-muted">Add </small>
+              </a>
           </div>
           </div>
           
           <div class="card-body">
-            Coming Soon
+            <div *ngFor="let alert of alertsDismiss">
+              <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+              </div>
+              
+            <table class="table  table-striped">
+              <thead>
+                <tr>
+                  <th>SNo</th>
+                  <th>School Name</th>
+                  <th>Amount</th>
+                  <th>Type</th>
+                  <th>Cedit/Debit Date</th>
+                  <th>StartDate</th>
+                  <th>EndDate</th>
+                  <th>Voucher Name</th>
+                  <th>Voucher Type</th>
+                  <th>CreatedAt</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr  *ngFor="let account of accountData; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{account.schoolId.name}} </td>
+                  <td>{{account.amount}}</td>
+                  <td><div *ngIf="account.amountType==1">Credit</div><div *ngIf="account.amountType==2">Debit</div></td>
+                  <td>{{account.creditdebitDate| date}}</td>
+                  <td>{{account.startDate| date}}</td>
+                  <td>{{account.endDate| date}}</td>
+                  <td>{{account.voucherNo}}</td>
+                  <td>{{account.voucherType}}</td>
+                  <td>{{account.createdAt| date}}</td>
+                  <td><i  (click)="deleteAccount(account._id,account.schoolId.name)" style="cursor:pointer;" class="cui-trash icons font-xl mt-2"></i>
+                   </td>
+                </tr>
+               
+              </tbody>
+            </table>
             
           </div>
         </div>

@@ -8,6 +8,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { AccountRoutingModule } from './account-routing.module';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { AccountComponent } from './account.component';
+import { AccountAddComponent } from './accountadd.component';
 @NgModule({
   imports: [
      CommonModule,FormsModule, HttpModule,
@@ -15,6 +16,6 @@ import { AccountComponent } from './account.component';
     AlertModule.forRoot(),
     ButtonsModule.forRoot()
   ],
-  declarations: [ AccountComponent ]
+  declarations: [ AccountComponent,AccountAddComponent ]
 })
 export class AccountModule { }

@@ -1,0 +1,141 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <strong>Add Account</strong>
+            <small>Form</small>
+          </div>
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="submit(f.value)">
+                <div *ngFor="let alert of alertsDismiss">
+                    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+                </div>
+                <div class="row">
+                    
+                    <div class="form-group col-sm-6">
+                        <label for="UserType">School</label>
+                        <select  class="form-control" [(ngModel)]='schoolVal'  #schoolId="ngModel"   id="schoolId"   name="schoolId">
+                            <option
+                            *ngFor="let school of schoolData; index as i"
+                            value="{{ school._id }}"
+                        >
+                            {{ school.name }}
+                        </option>                     
+                      </select>
+                       
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="Quantity">Amount</label>
+                          <input type="number"  id="amount" placeholder="Enter your Amount" [(ngModel)]='amountVal' name="amount" class="form-control" #amount="ngModel"   required>
+                        </div>
+                        
+                        <div *ngIf="amount.touched && ! amount.valid">
+                                <div *ngIf="amount.errors.required">
+                                  Amount is required
+                                </div>
+                        </div>
+                        
+                      </div>
+                    
+                  </div><!--/.row-->
+                  <div class="row">
+            
+                    <div class="form-group col-sm-6">
+                      <label for="ccnumber">Start Date</label>
+                      <input class="form-control" id="startDate" type="date" name="startDate" placeholder="date"  [(ngModel)]='startDateVal' #startDate="ngModel" required>
+                      <div *ngIf="startDate.touched && ! startDate.valid">
+                              <div *ngIf="startDate.errors.required">
+                                Start Date is required
+                              </div>
+                              
+                            </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <label for="ccnumber">End Date</label>
+                      <input class="form-control" id="endDate" type="date" name="endDate" placeholder="date"  [(ngModel)]='endDateVal' #endDate="ngModel" required>
+                      <div *ngIf="endDate.touched && ! endDate.valid">
+                              <div *ngIf="endDate.errors.required">
+                                Start Date is required
+                              </div>
+                              
+                            </div>
+                    </div>
+                  </div><!--/.row-->
+                  <div class="row">
+                    <div class="form-group col-sm-6">
+                      <label for="password">Credit/Debit Date</label>
+                      <input class="form-control" id="creditdebitDate" type="date" name="creditdebitDate" placeholder="date"  [(ngModel)]='creditdebitDateVal' #creditdebitDate="ngModel" required>
+                      <div *ngIf="creditdebitDate.touched && ! creditdebitDate.valid">
+                              <div *ngIf="creditdebitDate.errors.required">
+                                Credit/Debit Date is required
+                              </div>
+                              
+                            </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <label for="UserType">Amount Type</label>
+                      <select  class="form-control" [(ngModel)]='amountTypeVal'  #amountType="ngModel"   id="amountType"   name="amountType">
+                        <option value="1">credit</option>
+                        <option value="2">debit</option>                   
+                    </select>
+                     
+                    </div>
+                  </div><!--/.row-->
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="firstname">Voucher Number</label>
+                        <input type="text"  id="voucherNo" placeholder="Enter your voucherNo"  [(ngModel)]='voucherNoVal' name="voucherNo" class="form-control" #voucherNo="ngModel"  required >
+                      </div>
+                      
+                      <div *ngIf="voucherNo.touched && ! voucherNo.valid">
+                              <div *ngIf="voucherNo.errors.required">
+                                voucher Number is required
+                              </div>
+                              
+                       </div>
+                      
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="firstname">Voucher Type</label>
+                          <input type="text"  id="voucherType" placeholder="Enter your Voucher Type"  [(ngModel)]='voucherTypeVal' name="voucherType" class="form-control" #voucherType="ngModel"  required >
+                        </div>
+                        
+                        <div *ngIf="voucherType.touched && ! voucherType.valid">
+                                <div *ngIf="voucherType.errors.required">
+                                    voucherType is required
+                                </div>
+                                
+                         </div>
+                        
+                      </div>
+                  </div><!--/.row-->
+                  
+                  
+                  <div class="row">
+                    <div class="form-group col-sm-12">
+                      <label for="description">Description</label>
+                      <textarea id="textarea-input"  rows="9" class="form-control" [(ngModel)]='descriptionVal' id="description" placeholder="Enter your description"   #description="ngModel"  name="description" required></textarea>
+                      
+                      <div *ngIf="description.touched && ! description.valid">
+                              <div *ngIf="description.errors.required">
+                                  Description is required
+                              </div>
+                              
+                            </div>
+                    </div>
+                    
+                  </div><!--/.row-->
+                  <div class="card-footer">
+                    <button type="submit"  [disabled]="!f.valid"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                   <a  [routerLink]="['/account/listing']" > <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Cancel</button></a>
+                  </div>
+            </form>
+        </div>
+      </div><!--/.col-->
+    </div>
+    </div>
+    </div>
