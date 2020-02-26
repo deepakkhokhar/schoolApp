@@ -8,9 +8,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SchoolComponent  implements OnInit {
   public schoolData;
+  public displaymodule: boolean=true;
   alertsDismiss: any = [];
   constructor(private http: HttpClient,private router:Router) {}
   ngOnInit() { 
+    var retrievedObject = localStorage.getItem('userInfo');
+    var user=JSON.parse(retrievedObject);
+    if(user.role==2){
+      this.displaymodule=false;
+    }
     this.http.get<any>('http://localhost:3000/school/getAllSchool').subscribe(data => {
      console.log(data);
      if(data.status==200){

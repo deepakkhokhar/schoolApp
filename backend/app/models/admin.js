@@ -8,6 +8,7 @@ var Admin = new Schema({
 	isDeleted:{type:Boolean,default:false},
 	firstName:String,
 	lastName:String,
+	role:{type:Number,required:true},/* 1 for admin,2 for officer,3 for manager*/
 });
 
 
