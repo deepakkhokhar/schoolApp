@@ -1,6 +1,7 @@
 import {Component } from '@angular/core';
 import { navItems } from '../../_nav';
 import {Router} from '@angular/router';
+import * as jwt_decoder from "jwt-decode";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './default-layout.component.html'
@@ -14,8 +15,9 @@ export class DefaultLayoutComponent {
     this.sidebarMinimized = e;
   }
   logout(){
-    console.log("function called");
-	localStorage.clear();
+  console.log("function called");
+  localStorage.clear();
 	this.router.navigate(['login']);
-  }
+}
+
 }

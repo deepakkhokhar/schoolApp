@@ -9,12 +9,17 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { AuthGuard } from "./auth-guard.service";
+import { SchoolUserLoginComponent } from './views/school-user/school-user-login/school-user-login.component';
+import { SchoolLayoutComponent } from './containers/school-layout/school-layout.component';
+import { SchoolAuthGuardService } from './school-auth-guard.service';
 export const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full',
   },
+
+  
   {
     path: '404',
     component: P404Component,
@@ -37,6 +42,13 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'schools/login',
+    component: SchoolUserLoginComponent,
+    data: {
+      title: 'Login Page'
+    }
+  },
+  {
     path: 'register',
     component: RegisterComponent,
     data: {
@@ -46,7 +58,7 @@ export const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponent,
-	canActivate: [AuthGuard],
+	  canActivate: [AuthGuard],
     data: {
       title: 'Home'
     },
@@ -102,9 +114,31 @@ export const routes: Routes = [
       {
         path: 'widgets',
         loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
-      }
+      },
+       
     ]
   },
+
+  {
+    path: 'schools',
+    component: SchoolLayoutComponent,
+	  canActivate: [SchoolAuthGuardService],
+    data: {
+      title: 'School Home', 
+    },
+    children: [
+     
+      {
+        path: 'users',
+        loadChildren: () => import('../app/views/school-user/school-user.module').then(m =>m.SchoolUserModule)
+      },
+      {
+      path: 'dashboard',
+      loadChildren: () => import('./views/school-dashboard/school-dashboard.module').then(m => m.SchoolDashboardModule)
+    },
+    ]
+  },
+
   { path: '**', component: P404Component }
 ];
 

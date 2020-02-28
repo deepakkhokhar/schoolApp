@@ -26,6 +26,10 @@ const APP_CONTAINERS = [
   DefaultLayoutComponent
 ];
 
+const SCHOOL_CONTAINERS = [
+  SchoolLayoutComponent
+];
+
 import {
   AppAsideModule,
   AppBreadcrumbModule,
@@ -42,6 +46,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+import { SchoolUserModule } from './views/school-user/school-user.module';
+import { AlertService } from './alert.service';
+import { SchoolLayoutComponent } from './containers/school-layout/school-layout.component';
 
 @NgModule({
   imports: [
@@ -57,17 +64,23 @@ import { ChartsModule } from 'ng2-charts';
 	AlertModule.forRoot(),
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule,HttpClientModule
+    ChartsModule,
+    HttpClientModule,
+    SchoolUserModule,
   ],
   declarations: [
     AppComponent,
     ...APP_CONTAINERS,
+    ...SCHOOL_CONTAINERS,
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
-  providers: [{
+  providers: [
+    AlertService
+    ,
+    {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
