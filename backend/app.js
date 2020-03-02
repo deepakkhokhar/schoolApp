@@ -21,6 +21,7 @@ var schoolRouter = require('./routes/school');
 var accountRouter = require('./routes/account');
 var expensecategoryRouter = require('./routes/expensecategory');
 var expenseRouter = require('./routes/expense');
+var permissionRouter = require('./routes/permission');
 var app = express();
 
 // view engine setup
@@ -47,6 +48,7 @@ app.use('/school', schoolRouter);
 app.use('/expensecategory', expensecategoryRouter);
 app.use('/expense', expenseRouter);
 app.use('/account', accountRouter);
+app.use('/permission', permissionRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

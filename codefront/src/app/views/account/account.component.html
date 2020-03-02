@@ -17,41 +17,48 @@
             <div *ngFor="let alert of alertsDismiss">
               <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
               </div>
+              <div style="padding-bottom:2%;">
+                <label for="UserType">School</label>
+                <select  class="form-control" (change)="onChange($event.target.value)" [(ngModel)]='schoolVal'  #schoolId="ngModel"   id="schoolId"   name="schoolId">
+                    <option
+                    *ngFor="let school of schoolData; index as i"
+                    value="{{ school._id }}"
+                >
+                    {{ school.name }}
+                </option>                     
+              </select>
+              </div>
               
             <table class="table  table-striped">
               <thead>
                 <tr>
                   <th>SNo</th>
-                  <th>School Name</th>
-                  <th>Amount</th>
-                  <th>Type</th>
                   <th>Cedit/Debit Date</th>
-                  <th>StartDate</th>
-                  <th>EndDate</th>
-                  <th>Voucher Name</th>
-                  <th>Voucher Type</th>
-                  <th>CreatedAt</th>
-                  <th>Action</th>
+                  <th>Invoice No</th>
+                  
+                  <th>Debit</th>
+                  <th>Credit</th>
+                  <th>Balance</th>
+                  
                 </tr>
               </thead>
               <tbody>
-                <tr  *ngFor="let account of accountData; let i = index">
+                <tr   *ngFor="let account of accountData; let i = index">
                   <td>{{i+1}}</td>
-                  <td>{{account.schoolId.name}} </td>
-                  <td>{{account.amount}}</td>
-                  <td><div *ngIf="account.amountType==1">Credit</div><div *ngIf="account.amountType==2">Debit</div></td>
                   <td>{{account.creditdebitDate| date}}</td>
-                  <td>{{account.startDate| date}}</td>
-                  <td>{{account.endDate| date}}</td>
-                  <td>{{account.voucherNo}}</td>
-                  <td>{{account.voucherType}}</td>
-                  <td>{{account.createdAt| date}}</td>
-                  <td><i  (click)="deleteAccount(account._id,account.schoolId.name)" style="cursor:pointer;" class="cui-trash icons font-xl mt-2"></i>
-                   </td>
+                  <td>{{account._id}}</td>
+                  
+                  <td><div *ngIf="account.amountType==2">{{account.amount}}</div></td>
+                  <td><div *ngIf="account.amountType==1">{{account.amount}}</div></td>
+                  <td>{{account.balance}}</td>
+                </tr>
+                <tr *ngIf="!accountData">
+                  <td colspan="6">Please select school to see data.</td>
                 </tr>
                
               </tbody>
             </table>
+            
             
           </div>
         </div>

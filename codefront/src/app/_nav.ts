@@ -119,7 +119,11 @@ var retrievedObject = localStorage.getItem('userInfo');
           name: 'Reports',
           url: '/reports',
           icon: 'icon-speedometer'
-        }
+        }/*,{
+          name: 'Manage Permissions',
+          url: '/permission',
+          icon: 'icon-speedometer'
+        }*/
         
       ];
     

@@ -86,6 +86,9 @@ export const routes: Routes = [
       {
         path: 'reports',
         loadChildren: () => import('./views/reports/reports.module').then(m => m.ReportsModule)
+      },{
+        path: 'permission',
+        loadChildren: () => import('./views/permission/permission.module').then(m => m.PermissionModule)
       },
       {
         path: 'icons',

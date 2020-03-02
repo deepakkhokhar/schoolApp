@@ -8,18 +8,27 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AccountComponent  implements OnInit {
   public accountData;
+  public schoolData;
+  public schoolVal:any;
   alertsDismiss: any = [];
-  constructor(private http: HttpClient,private router:Router) {}
+  constructor(private http: HttpClient,private router:Router) {
+    
+  }
   ngOnInit() { 
     var retrievedObject = localStorage.getItem('userInfo');
     var user=JSON.parse(retrievedObject);
-    
-    this.http.get<any>('http://localhost:3000/account/getAllAccount/'+user._id).subscribe(data => {
+    this.http.get<any>('http://localhost:3000/school/getAllSchool').subscribe(data => {
+     console.log(data);
+     if(data.status==200){
+       this.schoolData=data.data;
+     }
+    })
+   /* this.http.get<any>('http://localhost:3000/account/getAllAccount/'+user._id).subscribe(data => {
      console.log(data); 
      if(data.status==200){
        this.accountData=data.data;
      }
-    })
+    })*/
     
    }
 
@@ -48,5 +57,16 @@ export class AccountComponent  implements OnInit {
 		}) 
     }
   }
+
+  onChange(schoolValue) {
+    var retrievedObject = localStorage.getItem('userInfo');
+    var user=JSON.parse(retrievedObject);
+    this.http.get<any>('http://localhost:3000/account/getSchoolAccount/'+user._id+"/"+schoolValue).subscribe(data => {
+     console.log(data); 
+     if(data.status==200){
+       this.accountData=data.data;
+     }
+    })
+}
   
 }

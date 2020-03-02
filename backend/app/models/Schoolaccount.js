@@ -14,7 +14,8 @@ var Schoolaccount = new Schema({
     startDate: Date,
     endDate: Date,
     voucherNo: String,
-    voucherType: String
+    voucherType: String,
+    balance:Number
 },{
     timestamps: true
 });
