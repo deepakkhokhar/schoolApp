@@ -1,0 +1,74 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="card-group">
+            <div class="card">
+              <div class="card-body">
+                <form #f="ngForm" (ngSubmit)="submit(f.value)">
+                  <h1>SchoolUser Login</h1>
+                  <p class="text-muted">Sign In to your account</p>
+				  <div *ngFor="let alert of alertsDismiss">
+					<alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+				  </div>
+				 <!-- <alert type="success" dismissOnTimeout="5000">
+            <strong>Well done!</strong> You successfully read this important alert message.
+          </alert>-->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+					<input type="text" ngModel name="userName" placeholder="Username" autocomplete="username" class="form-control" #userName="ngModel" minlength="3" maxlength="10"  required/>
+                    
+                  </div>
+				  <div *ngIf="userName.touched && ! userName.valid">
+					  <div *ngIf="userName.errors.required">
+						Username is required
+					  </div>
+					  <div *ngIf="userName.errors.minlength">
+						Username minimum length is
+						{{ userName.errors.minlength.requiredLength }}
+					  </div>
+					  <div *ngIf="userName.errors.maxlength">
+						Username maximum length is
+						{{ userName.errors.maxlength.requiredLength }}
+					  </div>
+					</div>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input type="password" ngModel name="password"  class="form-control" placeholder="Password" autocomplete="current-password" #password="ngModel" minlength="3" maxlength="10"   required>
+                  </div>
+				  <div *ngIf="password.touched && ! password.valid">
+					  <div *ngIf="password.errors.required">
+						Password is required
+					  </div>
+					  <div *ngIf="password.errors.minlength">
+						Password minimum length is
+						{{ password.errors.minlength.requiredLength }}
+					  </div>
+					  <div *ngIf="password.errors.maxlength">
+						Password maximum length is
+						{{ password.errors.maxlength.requiredLength }}
+					  </div>
+					</div>
+                  <div class="row">
+                    <div class="col-6">
+                      <button type="submit" [disabled]="!f.valid" class="btn btn-primary px-4">Login</button>
+                    </div>
+                    <div class="col-6 text-right">
+                     
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

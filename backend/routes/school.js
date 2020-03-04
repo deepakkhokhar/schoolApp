@@ -26,4 +26,5 @@ router.get("/getAllSchoolUser/:id", schoolController.getAllSchoolUser);
 router.get("/getSchool/:schoolId", schoolController.getSchoolInformation);
 router.delete("/delete/:id", schoolController.deleteSchool);
 router.delete("/deleteuser/:id", schoolController.deleteSchoolUser);
+router.post("/login", schoolController.login);
 module.exports = router;
