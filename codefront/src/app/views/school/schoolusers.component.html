@@ -33,7 +33,7 @@
                 <td>{{i+1}}</td>
                 <td>{{school.firstName}} {{school.lastName}}</td>
                 <td>{{school.emailaddress}}</td>
-                <td><div *ngIf="school.usertype==1">Accountant</div><div *ngIf="school.usertype==2">Academic</div><div *ngIf="school.usertype==3">Administrator</div></td>
+                <td><div *ngIf="school.usertype==1">Accountant</div><div *ngIf="school.usertype==2">Academic</div><div *ngIf="school.usertype==3">Administrator</div><div *ngIf="school.usertype==4">Secretaty</div></td>
                 <td>{{school.createdAt| date}}</td>
                 
                 <td><div *ngIf="school.isActive"><span class="badge badge-success">Active</span></div><div *ngIf="!school.isActive"><span class="badge badge-secondary">Inactive</span></div></td>

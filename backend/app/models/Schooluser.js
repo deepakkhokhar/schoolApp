@@ -8,7 +8,7 @@ var Schooluser = new Schema({
     userName: String,
     emailaddress:String,
     password:String,
-    usertype:String,//1-accountant,2-academic,3-administrator
+    usertype:String,//1-accountant,2-academic,3-administrator,4-secretaty
 	isDeleted:{type:Boolean,default:false},
     isActive:{type:Boolean,default:true},
     adminId:{type: mongoose.Schema.Types.ObjectId,ref:'Admin'},

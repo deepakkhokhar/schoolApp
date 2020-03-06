@@ -1,0 +1,49 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { SettingsComponent } from './settings.component';
+import { SettingAccountComponent } from './settingaccount.component';
+import { SettingUserRoleComponent } from './settingsuserrole.component';
+import { SettingThemeColorComponent } from './settingsthemecolor.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'schoolprofile'
+  },
+  {
+    path: 'schoolprofile',
+    component: SettingsComponent,
+    data: {
+      title: 'School Profile'
+    }
+  },
+  {
+    path: 'schoolaccount',
+    component: SettingAccountComponent,
+    data: {
+      title: 'School Account'
+    }
+  },
+  {
+    path: 'userrolepermission',
+    component: SettingUserRoleComponent,
+    data: {
+      title: 'User Role Permission'
+    }
+  },
+  {
+    path: 'themecolors',
+    component: SettingThemeColorComponent,
+    data: {
+      title: 'Theme Color'
+    }
+  }
+  
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class SettingsRoutingModule {}

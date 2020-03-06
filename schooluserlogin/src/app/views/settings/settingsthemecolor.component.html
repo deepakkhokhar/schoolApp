@@ -1,0 +1,61 @@
+<div class="animated fadeIn">
+
+    <div class="row">
+     
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-align-justify"></i> Theme Color
+            <div class="card-header-actions">
+            
+          </div>
+          </div>
+          <div class="card-body">
+            <form action="" method="post" class="form-horizontal">
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="hf-email">Color1</label>
+                <div class="col-md-9">
+                  <input [(colorPicker)]="color"
+                  [value]="color"   [style.background]="color"  (colorPickerChange)="onChangeColor($event)"/>
+                  
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="hf-password">Color2</label>
+                <div class="col-md-9">
+                  <input [(colorPicker)]="color2"
+                  [value]="color2"   [style.background]="color2"  (colorPickerChange)="onChangeColor2($event)"/>
+                  
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="hf-password">Color3</label>
+                <div class="col-md-9">
+                  <input [(colorPicker)]="color3" [value]="color3"   [style.background]="color3"  (colorPickerChange)="onChangeColor3($event)"/>
+                  
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="hf-password">Color4</label>
+                <div class="col-md-9">
+                  <input [(colorPicker)]="color4" [value]="color4"  [style.background]="color4"  (colorPickerChange)="onChangeColor4($event)"/>
+                  
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="hf-password">Color5</label>
+                <div class="col-md-9">
+                  <input [(colorPicker)]="color5" [value]="color5" [style.background]="color5"  (colorPickerChange)="onChangeColor5($event)"/>
+                  
+                </div>
+              </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+     
+    </div>
+   
+  </div>
+  
