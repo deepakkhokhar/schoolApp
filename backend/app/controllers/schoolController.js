@@ -120,12 +120,15 @@ exports.updateSchool=function(req, res) {
   }else{
     path='';
   }
+  if(req.body.adminId){
+    data.adminId=req.body.adminId;
+  }
   var data={ name: req.body.fullName, registrationNumber: req.body.regNo, country: req.body.country,
     city:req.body.city,registrationDate:req.body.regDate,phoneNumber:req.body.phonenumber,email:req.body.emailaddress,
-    address:req.body.address,logo:path,adminId:req.body.adminId,amount:req.body.amount,isActive:req.body.status,pay:req.body.pay};
+    address:req.body.address,logo:path,amount:req.body.amount,isActive:req.body.status,pay:req.body.pay};
   
     School.findOneAndUpdate({_id:req.params.id}, data, {upsert: true}, function(err, doc) {
-    if (err) return res.json({status: 100,message: "Error found"});
+    if (err)  return res.json({status: 100,message: "Error found"});
     // deleted at most one tank document
     res.json({status: 200,message: "schoolUpdated"});
 });
