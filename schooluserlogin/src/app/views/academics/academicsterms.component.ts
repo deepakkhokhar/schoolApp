@@ -8,11 +8,44 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AcademicsTermsComponent  implements OnInit {
   alertsDismiss: any = [];
+  public termlistingData;
   constructor(private http: HttpClient,private router:Router) {}
   ngOnInit() { 
     var retrievedObject = localStorage.getItem('userInfo');
       var user=JSON.parse(retrievedObject);
+      this.http.get<any>('http://localhost:3000/academic/getterm/'+user._id).subscribe(data => {
+     console.log(data);
+     if(data.status==200){
+       this.termlistingData=data.data;
+     }
+    })
    }
+
+   deleteAcademicsTerm(_id: string) {
+    if(confirm("Are you sure to delete this terms?")) {
+      this.http.delete<any>('http://localhost:3000/academic/deleteterm/'+_id).subscribe(data => {
+		  console.log(data);
+			if(data.status==100){
+			
+        this.alertsDismiss.push({
+				  type: 'danger',
+				  msg: `Error found`,
+				  timeout: 5000
+				});			
+			}else{
+				this.alertsDismiss.push({
+				  type: 'success',
+				  msg: `Term Removed Sucessfully.`,
+				  timeout: 5000
+				});
+				
+				
+			}
+        },error=>{
+			console.log("Error", error); 
+		}) 
+    }
+  }
 
   
 }

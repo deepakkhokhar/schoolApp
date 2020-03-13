@@ -104,6 +104,13 @@ const routes: Routes = [
         data: {
           title: 'Add Academics Terms'
         }
+      },
+      {
+        path: 'editterm/:id',
+		    component: AcademicsTermsAddComponent,
+        data: {
+          title: 'Update Academics Terms'
+        }
       }
     ]
   }

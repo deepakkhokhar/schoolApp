@@ -1,0 +1,78 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <strong>Add Terms</strong>
+            <small>Form</small>
+          </div> 
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="submit(f.value)">
+                <div *ngFor="let alert of alertsDismiss">
+                    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="Name">From Month</label>
+                        <select  class="form-control" [(ngModel)]='frommonthVal'  #frommonth="ngModel"   id="frommonth"   name="frommonth" required>
+                            <option value="January">January</option>
+                            <option value="Feburary">Feburary</option>
+                            <option value="March">March</option> 
+                            <option value="April">April</option> 
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option> 
+                            <option value="December">December</option>                   
+                        </select>
+                      </div>
+                      
+                      <div *ngIf="frommonth.touched && ! frommonth.valid">
+                              <div *ngIf="frommonth.errors.required">
+                                From Month is required
+                              </div>
+                            </div>
+                      
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="Name">To Month</label>
+                          <select  class="form-control" [(ngModel)]='tomonthVal'  #tomonth="ngModel"   id="tomonth"   name="tomonth" required>
+                            <option value="January">January</option>
+                            <option value="Feburary">Feburary</option>
+                            <option value="March">March</option> 
+                            <option value="April">April</option> 
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option> 
+                            <option value="December">December</option>                    
+                        </select>
+                        </div>
+                        
+                        <div *ngIf="tomonth.touched && ! tomonth.valid">
+                                <div *ngIf="tomonth.errors.required">
+                                    To Month is required
+                                </div>
+                              </div>
+                        
+                      </div>
+                  </div><!--/.row-->
+                  
+                  <div class="card-footer">
+                    <button type="submit"  [disabled]="!f.valid"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                   <a  [routerLink]="['/academics/termslisting']" > <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Cancel</button></a>
+                  </div>
+            </form>
+        </div>
+      </div><!--/.col-->
+    </div>
+    </div>
+    </div>

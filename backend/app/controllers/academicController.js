@@ -135,3 +135,52 @@ exports.updateYear=function(req, res) {
       res.json({status: 200,message: "AcademicYearUpdated"});
   });
   }
+
+  exports.addterms = function(req, res) {
+    console.log(req.body);
+    var data={ schooluserId:req.body.schooluserId,frommonth: req.body.formvalue.frommonth,tomonth: req.body.formvalue.tomonth};
+        var Academictermdata = new Academicterm(data);
+     
+        // save model to database
+        Academictermdata.save(function (err, data) {
+          if (err) return res.json({status: 100,message: "Error found"});
+         
+          res.json({status: 200,message: "TermSaved"});
+        }); 
+  }
+
+  exports.getterm=function(req, res) {
+    Academicterm.find({schooluserId:req.params.id,isDeleted:false}, function(err, data) {
+    if (!err){ 
+      res.json({status: 200,data: data});
+    } else {return res.json({status: 100,message: "Error found"});}
+  });
+  }
+
+  exports.deleteterm=function(req, res) {
+    console.log(req.params.id);
+    Academicterm.remove({_id:req.params.id}, function (err) {
+      if (err) return res.json({status: 100,message: "Error found"});
+      // deleted at most one tank document
+      res.json({status: 200,message: "termRemoved"});
+    });
+  }
+
+  exports.getATerm=function(req, res) {
+  
+    Academicterm.findById(req.params.id, function(err, data) {
+      if (!err){ 
+        res.json({status: 200,data: data});
+      } else {return res.json({status: 100,message: "Error found"});}
+  });
+  }
+
+  exports.updateTerm=function(req, res) {
+    console.log(req.body);
+    
+    Academicterm.findOneAndUpdate({_id:req.params.id}, req.body, {upsert: true}, function(err, doc) {
+        if (err) return res.json({status: 100,message: "Error found"});
+        // deleted at most one tank document
+        res.json({status: 200,message: "AcademictermUpdated"});
+    });
+    }
