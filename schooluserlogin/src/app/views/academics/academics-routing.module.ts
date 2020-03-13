@@ -85,6 +85,13 @@ const routes: Routes = [
         }
       },
       {
+        path: 'edityear/:id',
+		    component: AcademicsYearAddComponent,
+        data: {
+          title: 'Update Academics Year'
+        }
+      },
+      {
         path: 'termslisting',
 		    component: AcademicsTermsComponent,
         data: {

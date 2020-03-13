@@ -15,11 +15,11 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label for="Name">Year</label>
-                        <input type="number"  id="className" placeholder="Year"  [(ngModel)]='classnameVal' name="className" class="form-control" #className="ngModel" minlength="3" maxlength="30"  required >
+                        <input type="number"  id="yearName" placeholder="Year"  [(ngModel)]='yearNameVal' name="yearName" class="form-control" #yearName="ngModel"   required >
                       </div>
                       
-                      <div *ngIf="className.touched && ! className.valid">
-                              <div *ngIf="className.errors.required">
+                      <div *ngIf="yearName.touched && ! yearName.valid">
+                              <div *ngIf="yearName.errors.required">
                                 Year is required
                               </div>
                             </div>

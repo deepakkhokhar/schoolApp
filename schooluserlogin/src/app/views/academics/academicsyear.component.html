@@ -28,16 +28,14 @@
                 </tr>
               </thead>
               <tbody>
-                <tr  *ngFor="let classlisting of classlistingData; let i = index">
+                <tr  *ngFor="let yearlisting of yearlistingData; let i = index">
                   
                   <td>{{i+1}}</td>
-                  <td>{{classlisting.className}}</td>
-                  
-                  <td>{{classlisting.createdAt| date}}</td>
-                  
+                  <td>{{yearlisting.yearName}}</td>
+                  <td>{{yearlisting.createdAt| date}}</td>
                   <td>
-                    <a [routerLink]="['/academics/edit/',classlisting._id]"><i class="cui-pencil icons font-xl mt-2"></i></a>
-                    <i  (click)="deleteAcademics(classlisting._id,classlisting.className)" style="cursor:pointer;" class="cui-trash icons font-xl mt-2"></i>
+                    <a [routerLink]="['/academics/edityear/',yearlisting._id]"><i class="cui-pencil icons font-xl mt-2"></i></a>
+                    <i  (click)="deleteAcademicsYear(yearlisting._id,yearlisting.yearName)" style="cursor:pointer;" class="cui-trash icons font-xl mt-2"></i>
                     
                    </td>
                 </tr>

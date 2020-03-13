@@ -86,3 +86,52 @@ exports.getsubject=function(req, res) {
 
   })
 }
+
+exports.addyear = function(req, res) {
+  console.log(req.body);
+  var data={ schooluserId:req.body.schooluserId,yearName: req.body.formvalue.yearName};
+      var Academicyeardata = new Academicyear(data);
+   
+      // save model to database
+      Academicyeardata.save(function (err, data) {
+        if (err) return res.json({status: 100,message: "Error found"});
+       
+        res.json({status: 200,message: "YearSaved"});
+      }); 
+}
+
+exports.getyear=function(req, res) {
+  Academicyear.find({schooluserId:req.params.id,isDeleted:false}, function(err, data) {
+  if (!err){ 
+    res.json({status: 200,data: data});
+  } else {return res.json({status: 100,message: "Error found"});}
+});
+}
+
+exports.deleteyear=function(req, res) {
+  console.log(req.params.id);
+  Academicyear.remove({_id:req.params.id}, function (err) {
+    if (err) return res.json({status: 100,message: "Error found"});
+    // deleted at most one tank document
+    res.json({status: 200,message: "yearRemoved"});
+  });
+}
+
+exports.getAYear=function(req, res) {
+  
+  Academicyear.findById(req.params.id, function(err, data) {
+    if (!err){ 
+      res.json({status: 200,data: data});
+    } else {return res.json({status: 100,message: "Error found"});}
+});
+}
+
+exports.updateYear=function(req, res) {
+  console.log(req.body);
+  
+  Academicyear.findOneAndUpdate({_id:req.params.id}, req.body, {upsert: true}, function(err, doc) {
+      if (err) return res.json({status: 100,message: "Error found"});
+      // deleted at most one tank document
+      res.json({status: 200,message: "AcademicYearUpdated"});
+  });
+  }

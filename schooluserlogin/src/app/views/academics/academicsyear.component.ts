@@ -8,22 +8,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AcademicsYearComponent  implements OnInit {
   
-  public classlistingData;
+  public yearlistingData;
   alertsDismiss: any = [];
   constructor(private http: HttpClient,private router:Router) {}
   ngOnInit() { 
     var retrievedObject = localStorage.getItem('userInfo');
       var user=JSON.parse(retrievedObject);
-    this.http.get<any>('http://localhost:3000/academic/getclass/'+user._id).subscribe(data => {
+    this.http.get<any>('http://localhost:3000/academic/getyear/'+user._id).subscribe(data => {
      console.log(data);
      if(data.status==200){
-       this.classlistingData=data.data;
+       this.yearlistingData=data.data;
      }
     })
    }
-   deleteAcademics(_id: string,name:string) {
+   deleteAcademicsYear(_id: string,name:string) {
     if(confirm("Are you sure to delete "+name+"?")) {
-      this.http.delete<any>('http://localhost:3000/academic/delete/'+_id).subscribe(data => {
+      this.http.delete<any>('http://localhost:3000/academic/deleteyear/'+_id).subscribe(data => {
 		  console.log(data);
 			if(data.status==100){
 			
@@ -35,7 +35,7 @@ export class AcademicsYearComponent  implements OnInit {
 			}else{
 				this.alertsDismiss.push({
 				  type: 'success',
-				  msg: `Class Removed Sucessfully.`,
+				  msg: `Year Removed Sucessfully.`,
 				  timeout: 5000
 				});
 				

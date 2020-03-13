@@ -9,18 +9,18 @@ import { NgForm } from '@angular/forms';
 }) 
 export class AcademicsYearAddComponent  implements OnInit {
   alertsDismiss: any = [];
-  classnameVal:any;
-  classId:any;
+  yearNameVal:any;
+  yearId:any;
   constructor(private http: HttpClient,private router:Router,private activatedRoute:ActivatedRoute) {}
   ngOnInit() { 
-    this.classId=this.activatedRoute.snapshot.paramMap.get("id");
-    if(this.classId){
+    this.yearId=this.activatedRoute.snapshot.paramMap.get("id");
+    if(this.yearId){
       
-      this.http.get<any>('http://localhost:3000/academic/getAClass/'+this.classId).subscribe(data => {
+      this.http.get<any>('http://localhost:3000/academic/getAYear/'+this.yearId).subscribe(data => {
        
        if(data.status==200){
         
-         this.classnameVal=data.data.className;
+         this.yearNameVal=data.data.yearName;
          
        }
       })
@@ -28,8 +28,8 @@ export class AcademicsYearAddComponent  implements OnInit {
   }
 
   submit(value: any) {
-    /*if(this.classId){
-      this.http.post<any>('http://localhost:3000/academic/updateClass/'+this.classId, value).subscribe(data => {
+    if(this.yearId){
+      this.http.post<any>('http://localhost:3000/academic/updateYear/'+this.yearId, value).subscribe(data => {
       if(data.status==200){
          
         this.alertsDismiss.push({
@@ -53,16 +53,16 @@ export class AcademicsYearAddComponent  implements OnInit {
       
     var retrievedObject = localStorage.getItem('userInfo');
       var user=JSON.parse(retrievedObject);
-      this.http.post<any>('http://localhost:3000/academic/addclass', {'schooluserId':user._id,'formvalue':value}).subscribe(data => {
+      this.http.post<any>('http://localhost:3000/academic/addyear', {'schooluserId':user._id,'formvalue':value}).subscribe(data => {
 		    if(data.status==200){
            
           this.alertsDismiss.push({
             type: 'success',
-            msg: `class created successfully`,
+            msg: `year created successfully`,
             timeout: 3000
           });
           
-          this.router.navigate( [ '/academics/classlisting' ] );   
+          this.router.navigate( [ '/academics/yearlisting' ] );   
             
         }
         },error=>{
@@ -73,6 +73,6 @@ export class AcademicsYearAddComponent  implements OnInit {
         timeout: 5000
       });
     })
-  }*/
+  }
   }
 }
