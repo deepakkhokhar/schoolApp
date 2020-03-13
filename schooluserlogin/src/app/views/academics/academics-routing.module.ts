@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { AcademicsClassComponent } from './academicsclass.component';
 import { AcademicsClassAddComponent } from './academicsclassadd.component';
 import { AcademicsStreamComponent } from './academicsstream.component';
 import { AcademicsStreamAddComponent } from './academicsstreamadd.component';
 import { AcademicsSubjectComponent } from './academicssubject.component';
 import { AcademicsSubjectAddComponent } from './academicssubjectadd.component';
+import { AcademicsYearComponent } from './academicsyear.component';
+import { AcademicsYearAddComponent } from './academicsyearadd.component';
+import { AcademicsTermsComponent } from './academicsterms.component';
+import { AcademicsTermsAddComponent } from './academicstermsadd.component';
 
 const routes: Routes = [
   {
@@ -65,6 +68,34 @@ const routes: Routes = [
 		    component: AcademicsSubjectAddComponent,
         data: {
           title: 'Add Academics Subject'
+        }
+      },
+      {
+        path: 'yearlisting',
+		    component: AcademicsYearComponent,
+        data: {
+          title: 'Add Academics Year'
+        }
+      },
+      {
+        path: 'addyear',
+		    component: AcademicsYearAddComponent,
+        data: {
+          title: 'Add Academics Year'
+        }
+      },
+      {
+        path: 'termslisting',
+		    component: AcademicsTermsComponent,
+        data: {
+          title: 'Add Academics Terms'
+        }
+      },
+      {
+        path: 'addterms',
+		    component: AcademicsTermsAddComponent,
+        data: {
+          title: 'Add Academics Terms'
         }
       }
     ]

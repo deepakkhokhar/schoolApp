@@ -1,9 +1,7 @@
 import { CommonModule } from '@angular/common'; 
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
-
 import { HttpModule } from "@angular/http";
-
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { AcademicsRoutingModule } from './academics-routing.module';
 import { AlertModule } from 'ngx-bootstrap/alert';
@@ -13,6 +11,10 @@ import { AcademicsStreamComponent } from './academicsstream.component';
 import { AcademicsStreamAddComponent } from './academicsstreamadd.component';
 import { AcademicsSubjectComponent } from './academicssubject.component';
 import { AcademicsSubjectAddComponent } from './academicssubjectadd.component';
+import { AcademicsYearComponent } from './academicsyear.component';
+import { AcademicsYearAddComponent } from './academicsyearadd.component';
+import { AcademicsTermsComponent } from './academicsterms.component';
+import { AcademicsTermsAddComponent } from './academicstermsadd.component';
 
 @NgModule({
   imports: [
@@ -21,6 +23,6 @@ import { AcademicsSubjectAddComponent } from './academicssubjectadd.component';
     AlertModule.forRoot(),
     ButtonsModule.forRoot()
   ],
-  declarations: [ AcademicsClassComponent,AcademicsClassAddComponent,AcademicsStreamComponent,AcademicsStreamAddComponent,AcademicsSubjectComponent,AcademicsSubjectAddComponent ]
+  declarations: [ AcademicsClassComponent,AcademicsClassAddComponent,AcademicsStreamComponent,AcademicsStreamAddComponent,AcademicsSubjectComponent,AcademicsSubjectAddComponent,AcademicsYearComponent,AcademicsYearAddComponent,AcademicsTermsComponent,AcademicsTermsAddComponent ]
 })
 export class AcademicsModule { }
