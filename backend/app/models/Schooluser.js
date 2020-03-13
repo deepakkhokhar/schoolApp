@@ -12,7 +12,8 @@ var Schooluser = new Schema({
 	isDeleted:{type:Boolean,default:false},
     isActive:{type:Boolean,default:true},
     adminId:{type: mongoose.Schema.Types.ObjectId,ref:'Admin'},
-    schoolId:{type: mongoose.Schema.Types.ObjectId,ref:'School'}
+    schoolId:{type: mongoose.Schema.Types.ObjectId,ref:'School'},
+    schooluserId:{type: mongoose.Schema.Types.ObjectId,ref:'Schooluser'}
 },{
     timestamps: true
 });

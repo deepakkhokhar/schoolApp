@@ -72,17 +72,8 @@ var retrievedObject = localStorage.getItem('userInfo');
               url: '/academics/addclass',
               icon: 'icon-puzzle'
             },
-            {
-              name: 'Subject listing',
-              url: '/academics/subjectlisting',
-              icon: 'icon-puzzle'
-            },
-            {
-              name: 'Add Subject',
-              url: '/academics/addsubject',
-              icon: 'icon-puzzle'
-            },
-            {
+           
+           /* {
               name: 'Stream listing',
               url: '/academics/streamlisting',
               icon: 'icon-puzzle'
@@ -91,7 +82,7 @@ var retrievedObject = localStorage.getItem('userInfo');
               name: 'Add Stream',
               url: '/academics/addstream',
               icon: 'icon-puzzle'
-            },
+            },*/
             {
               name: 'Academic Year listing',
               url: '/academics/yearlisting',
@@ -266,17 +257,8 @@ var retrievedObject = localStorage.getItem('userInfo');
               url: '/academics/addclass',
               icon: 'icon-puzzle'
             },
-            {
-              name: 'Subject listing',
-              url: '/academics/subjectlisting',
-              icon: 'icon-puzzle'
-            },
-            {
-              name: 'Add Subject',
-              url: '/academics/addsubject',
-              icon: 'icon-puzzle'
-            },
-            {
+           
+           /* {
               name: 'Stream listing',
               url: '/academics/streamlisting',
               icon: 'icon-puzzle'
@@ -285,7 +267,7 @@ var retrievedObject = localStorage.getItem('userInfo');
               name: 'Add Stream',
               url: '/academics/addstream',
               icon: 'icon-puzzle'
-            },
+            },*/
             {
               name: 'Academic Year listing',
               url: '/academics/yearlisting',
@@ -402,17 +384,8 @@ var retrievedObject = localStorage.getItem('userInfo');
               url: '/academics/addclass',
               icon: 'icon-puzzle'
             },
-            {
-              name: 'Subject listing',
-              url: '/academics/subjectlisting',
-              icon: 'icon-puzzle'
-            },
-            {
-              name: 'Add Subject',
-              url: '/academics/addsubject',
-              icon: 'icon-puzzle'
-            },
-            {
+           
+           /* {
               name: 'Stream listing',
               url: '/academics/streamlisting',
               icon: 'icon-puzzle'
@@ -421,7 +394,7 @@ var retrievedObject = localStorage.getItem('userInfo');
               name: 'Add Stream',
               url: '/academics/addstream',
               icon: 'icon-puzzle'
-            },
+            },*/
             {
               name: 'Academic Year listing',
               url: '/academics/yearlisting',
@@ -596,17 +569,8 @@ var retrievedObject = localStorage.getItem('userInfo');
               url: '/academics/addclass',
               icon: 'icon-puzzle'
             },
-            {
-              name: 'Subject listing',
-              url: '/academics/subjectlisting',
-              icon: 'icon-puzzle'
-            },
-            {
-              name: 'Add Subject',
-              url: '/academics/addsubject',
-              icon: 'icon-puzzle'
-            },
-            {
+            
+           /* {
               name: 'Stream listing',
               url: '/academics/streamlisting',
               icon: 'icon-puzzle'
@@ -615,7 +579,7 @@ var retrievedObject = localStorage.getItem('userInfo');
               name: 'Add Stream',
               url: '/academics/addstream',
               icon: 'icon-puzzle'
-            },
+            },*/
             {
               name: 'Academic Year listing',
               url: '/academics/yearlisting',

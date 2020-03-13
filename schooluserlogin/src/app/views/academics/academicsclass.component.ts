@@ -4,27 +4,26 @@ import { HttpClient } from '@angular/common/http';
 
 
 @Component({
-  templateUrl: 'settingsuserrole.component.html'
+  templateUrl: 'academicsclass.component.html'
 })
-export class SettingUserRoleComponent  implements OnInit {
+export class AcademicsClassComponent  implements OnInit {
   
+  public classlistingData;
   alertsDismiss: any = [];
-  public schoolData:any;
   constructor(private http: HttpClient,private router:Router) {}
   ngOnInit() { 
     var retrievedObject = localStorage.getItem('userInfo');
       var user=JSON.parse(retrievedObject);
-      this.http.get<any>('http://localhost:3000/school/getAllSchoolUser/'+user.schoolId).subscribe(data => {
-     console.log(data); 
+    this.http.get<any>('http://localhost:3000/academic/getclass/'+user._id).subscribe(data => {
+     console.log(data);
      if(data.status==200){
-       this.schoolData=data.data;
+       this.classlistingData=data.data;
      }
     })
    }
-
-   deleteSchoolUser(_id: string) {
-    if(confirm("Are you sure to delete this school user?")) {
-      this.http.delete<any>('http://localhost:3000/school/deleteuser/'+_id).subscribe(data => {
+   deleteAcademics(_id: string,name:string) {
+    if(confirm("Are you sure to delete "+name+"?")) {
+      this.http.delete<any>('http://localhost:3000/academic/delete/'+_id).subscribe(data => {
 		  console.log(data);
 			if(data.status==100){
 			
@@ -36,7 +35,7 @@ export class SettingUserRoleComponent  implements OnInit {
 			}else{
 				this.alertsDismiss.push({
 				  type: 'success',
-				  msg: `School User Removed Sucessfully.`,
+				  msg: `Class Removed Sucessfully.`,
 				  timeout: 5000
 				});
 				

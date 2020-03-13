@@ -1,0 +1,45 @@
+<div class="animated fadeIn">
+
+    <div class="row">
+     
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-align-justify"></i> Subject listing
+            <div class="card-header-actions">
+            <a   [routerLink]="['/academics/addsubject/',streamId]">
+              <small class="text-muted">Add Subject</small>
+            </a>
+          </div>
+          </div>
+          
+          <div class="card-body">
+            <div *ngFor="let alert of alertsDismiss">
+              <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+              </div>
+              
+            <table class="table  table-striped">
+              <thead>
+                <tr>
+                  <th>SNo</th>
+                  <th>Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr  *ngFor="let subjectlisting of subjectlistingData; let i = index">
+                  
+                  <td>{{i+1}}</td>
+                  <td>{{subjectlisting.name}}</td>
+                  
+                </tr>
+               
+              </tbody>
+            </table>
+            
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  
+  

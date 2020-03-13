@@ -1,7 +1,14 @@
 exports.addSchoolUser = function(req, res) {
   console.log(req.body);
-  var data={ schoolId:req.body.schoolId,adminId:req.body.adminId,firstName: req.body.formvalue.firstName, lastName: req.body.formvalue.lastName, userName: req.body.formvalue.userName,
+  
+  var data={ schoolId:req.body.schoolId,firstName: req.body.formvalue.firstName, lastName: req.body.formvalue.lastName, userName: req.body.formvalue.userName,
     emailaddress:req.body.formvalue.emailaddress,password:req.body.formvalue.password,usertype:req.body.formvalue.usertype};
+    if(req.body.adminId){
+      data.adminId=req.body.adminId;
+    }
+    if(req.body.schooluserId){
+      data.schooluserId=req.body.schooluserId;
+    }
     var SchoolInfoUser = new Schooluser(data);
  
     // save model to database

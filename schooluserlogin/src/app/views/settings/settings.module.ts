@@ -10,6 +10,7 @@ import { SettingsComponent } from './settings.component';
 import { SettingAccountComponent } from './settingaccount.component';
 import { SettingUserRoleComponent } from './settingsuserrole.component';
 import { SettingThemeColorComponent } from './settingsthemecolor.component';
+import { AddSchoolUserComponent } from './addschooluser.component';
 import { DatePipe } from '@angular/common';
 
 @NgModule({
@@ -20,7 +21,7 @@ import { DatePipe } from '@angular/common';
     ButtonsModule.forRoot(),
     ColorPickerModule
   ],
-  declarations: [ SettingsComponent,SettingAccountComponent,SettingUserRoleComponent,SettingThemeColorComponent ],
+  declarations: [ SettingsComponent,SettingAccountComponent,SettingUserRoleComponent,SettingThemeColorComponent,AddSchoolUserComponent ],
   providers: [DatePipe]
 })
 export class SettingsModule { }

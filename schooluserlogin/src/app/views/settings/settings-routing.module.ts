@@ -5,6 +5,7 @@ import { SettingsComponent } from './settings.component';
 import { SettingAccountComponent } from './settingaccount.component';
 import { SettingUserRoleComponent } from './settingsuserrole.component';
 import { SettingThemeColorComponent } from './settingsthemecolor.component';
+import { AddSchoolUserComponent } from './addschooluser.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,20 @@ const routes: Routes = [
     component: SettingUserRoleComponent,
     data: {
       title: 'User Role Permission'
+    }
+  },
+  {
+    path: 'addSchoolUser',
+    component: AddSchoolUserComponent,
+    data: {
+      title: 'Add School User'
+    }
+  },
+  {
+    path: 'editschoolUser/:id',
+    component: AddSchoolUserComponent,
+    data: {
+      title: 'Update School User'
     }
   },
   {

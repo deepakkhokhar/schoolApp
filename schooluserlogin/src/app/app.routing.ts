@@ -72,6 +72,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/settings/settings.module').then(m => m.SettingsModule)
       },
       {
+        path: 'academics',
+        loadChildren: () => import('./views/academics/academics.module').then(m => m.AcademicsModule)
+      },
+      {
         path: 'icons',
         loadChildren: () => import('./views/icons/icons.module').then(m => m.IconsModule)
       },
