@@ -9,8 +9,9 @@ import { HttpClient } from '@angular/common/http';
 export class AcademicsTermsAddComponent  implements OnInit {
   alertsDismiss: any = [];
   termId:any;
-  frommonthVal:any;
-  tomonthVal:any;
+  LevelVal:any;
+ /* frommonthVal:any;
+  tomonthVal:any;*/
   constructor(private http: HttpClient,private router:Router,private activatedRoute:ActivatedRoute) {}
   ngOnInit() { 
     var retrievedObject = localStorage.getItem('userInfo');
@@ -18,19 +19,18 @@ export class AcademicsTermsAddComponent  implements OnInit {
       this.termId=this.activatedRoute.snapshot.paramMap.get("id");
     if(this.termId){
       
-      this.http.get<any>('http://localhost:3000/academic/getATerm/'+this.termId).subscribe(data => {
+      this.http.get<any>('http://localhost:3000/academic/getALevel/'+this.termId).subscribe(data => {
        
        if(data.status==200){
-        
-         this.frommonthVal=data.data.frommonth;
-         this.tomonthVal=data.data.tomonth;
+        console.log(data.data);
+         this.LevelVal=data.data.LevelName;
        }
       })
     } 
    }
    submit(value: any) {
     if(this.termId){
-      this.http.post<any>('http://localhost:3000/academic/updateTerm/'+this.termId, value).subscribe(data => {
+      this.http.post<any>('http://localhost:3000/academic/updateLevel/'+this.termId, value).subscribe(data => {
       if(data.status==200){
          
         this.alertsDismiss.push({
@@ -39,7 +39,7 @@ export class AcademicsTermsAddComponent  implements OnInit {
           timeout: 3000
         });
         
-        this.router.navigate( [ '/academics/termslisting' ] );  
+        this.router.navigate( [ '/academics/levellisting' ] );  
           
       }
       },error=>{
@@ -53,16 +53,16 @@ export class AcademicsTermsAddComponent  implements OnInit {
     }else{
     var retrievedObject = localStorage.getItem('userInfo');
     var user=JSON.parse(retrievedObject);
-    this.http.post<any>('http://localhost:3000/academic/addterms', {'schooluserId':user._id,'formvalue':value}).subscribe(data => {
+    this.http.post<any>('http://localhost:3000/academic/addlevel', {'schooluserId':user._id,'formvalue':value}).subscribe(data => {
       if(data.status==200){
          
         this.alertsDismiss.push({
           type: 'success',
-          msg: `terms created successfully`,
+          msg: `level created successfully`,
           timeout: 3000
         });
         
-        this.router.navigate( [ '/academics/termslisting' ] );   
+        this.router.navigate( [ '/academics/levellisting' ] );   
           
       }
       },error=>{

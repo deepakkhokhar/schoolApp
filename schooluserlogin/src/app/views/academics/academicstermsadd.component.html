@@ -3,7 +3,7 @@
       <div class="col-sm-12">
         <div class="card">
           <div class="card-header">
-            <strong>Add Terms</strong>
+            <strong>Add Level</strong>
             <small>Form</small>
           </div> 
           <div class="card-body">
@@ -12,9 +12,36 @@
                     <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
                 </div>
                 <div class="row">
-                    <div class="col-sm-6">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="Name">Level</label>
+                      <input type="text"  id="LevelName" placeholder="Level"  [(ngModel)]='LevelVal' name="LevelName" class="form-control" #LevelName="ngModel" minlength="3" maxlength="30"  required >
+                    </div>
+                    
+                    <div *ngIf="LevelName.touched && ! LevelName.valid">
+                            <div *ngIf="LevelName.errors.required">
+                              Level Name is required
+                            </div>
+                            <div *ngIf="LevelName.errors.minlength">
+                              Level Name minimum length is
+                              {{ LevelName.errors.minlength.requiredLength }}
+                            </div>
+                            <div *ngIf="LevelName.errors.maxlength">
+                              Level Name maximum length is
+                              {{ LevelName.errors.maxlength.requiredLength }}
+                            </div>
+                          </div>
+                    
+                  </div>
+                  <div class="col-sm-6">
+                    
+                    
+                  </div>
+                </div><!--/.row-->
+                <div class="row">
+                  <!--   <div class="col-sm-6">
                       <div class="form-group">
-                        <label for="Name">From Month</label>
+                        <label for="Name">Add Level</label>
                         <select  class="form-control" [(ngModel)]='frommonthVal'  #frommonth="ngModel"   id="frommonth"   name="frommonth" required>
                             <option value="January">January</option>
                             <option value="Feburary">Feburary</option>
@@ -39,7 +66,7 @@
                       
                     </div>
                     <div class="col-sm-6">
-                        <div class="form-group">
+                       <div class="form-group">
                           <label for="Name">To Month</label>
                           <select  class="form-control" [(ngModel)]='tomonthVal'  #tomonth="ngModel"   id="tomonth"   name="tomonth" required>
                             <option value="January">January</option>
@@ -63,12 +90,12 @@
                                 </div>
                               </div>
                         
-                      </div>
+                      </div>-->
                   </div><!--/.row-->
                   
                   <div class="card-footer">
                     <button type="submit"  [disabled]="!f.valid"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
-                   <a  [routerLink]="['/academics/termslisting']" > <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Cancel</button></a>
+                   <a  [routerLink]="['/academics/levellisting']" > <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Cancel</button></a>
                   </div>
             </form>
         </div>

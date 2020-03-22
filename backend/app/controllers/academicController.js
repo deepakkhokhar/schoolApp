@@ -48,10 +48,9 @@ exports.deleteClass=function(req, res) {
   }
 
   exports.addstream=function(req, res) {
-      //console.log(req.params.classId);
-      //console.log(req.body);
+      
       Academic.updateOne({'_id': req.params.classId}, {'$push': {
-        'stream': {name:req.body.className}
+        'stream': {name:req.body.streamName,level:req.body.level}
     }}, function(err) {
        // console.log(err);
         if (err) return res.json({status: 100,message: "Error found"});
@@ -60,7 +59,7 @@ exports.deleteClass=function(req, res) {
   }
 
   exports.getstream=function(req, res) {
-    Academic.find({_id:req.params.classId,isDeleted:false}, function(err, data) {
+    Academic.find({_id:req.params.classId,isDeleted:false}).populate('stream.level').exec(function(err, data) {
     if (!err){ 
       res.json({status: 200,data: data});
     } else {return res.json({status: 100,message: "Error found"});}
@@ -70,16 +69,16 @@ exports.deleteClass=function(req, res) {
 exports.addsubject=function(req, res) {
   
   console.log(req.body);
-  Academic.findOneAndUpdate( {stream: {$elemMatch:{_id: req.params.streamId}}}, {$push: { 'stream.$.subjects' : {"name":req.body.subjectName}}}, function(err) {
+  Academiclevel.findOneAndUpdate( {_id:  req.params.levelId}, {$push: { 'subjects' : {"name":req.body.subjectName}}}, function(err) {
     console.log(err);
     if (err) return res.json({status: 100,message: "Error found"});
-    res.json({status: 200,message: "AcademicUpdated"});
+    res.json({status: 200,message: "AcademiclevelUpdated"});
 });
 }
 
 exports.getsubject=function(req, res) {
-  console.log(req.params.streamId);
-  Academic.findOne({stream: {$elemMatch:{_id: req.params.streamId}}},function (err, data) {
+  
+  Academiclevel.findOne({_id: req.params.levelId},function (err, data) {
     if (!err){ 
       res.json({status: 200,data: data});
     } else {return res.json({status: 100,message: "Error found"});}  
@@ -89,7 +88,7 @@ exports.getsubject=function(req, res) {
 
 exports.addyear = function(req, res) {
   console.log(req.body);
-  var data={ schooluserId:req.body.schooluserId,yearName: req.body.formvalue.yearName};
+  var data={ schooluserId:req.body.schooluserId,yearName: req.body.formvalue.yearName,frommonth: req.body.formvalue.frommonth,tomonth: req.body.formvalue.tomonth};
       var Academicyeardata = new Academicyear(data);
    
       // save model to database
@@ -136,51 +135,51 @@ exports.updateYear=function(req, res) {
   });
   }
 
-  exports.addterms = function(req, res) {
+  exports.addlevel = function(req, res) {
     console.log(req.body);
-    var data={ schooluserId:req.body.schooluserId,frommonth: req.body.formvalue.frommonth,tomonth: req.body.formvalue.tomonth};
-        var Academictermdata = new Academicterm(data);
+    var data={ schooluserId:req.body.schooluserId,LevelName: req.body.formvalue.LevelName};
+        var Academicleveldata = new Academiclevel(data);
      
         // save model to database
-        Academictermdata.save(function (err, data) {
+        Academicleveldata.save(function (err, data) {
           if (err) return res.json({status: 100,message: "Error found"});
          
-          res.json({status: 200,message: "TermSaved"});
+          res.json({status: 200,message: "LevelSaved"});
         }); 
   }
 
-  exports.getterm=function(req, res) {
-    Academicterm.find({schooluserId:req.params.id,isDeleted:false}, function(err, data) {
+  exports.getlevel=function(req, res) {
+    Academiclevel.find({schooluserId:req.params.id,isDeleted:false}, function(err, data) {
     if (!err){ 
       res.json({status: 200,data: data});
     } else {return res.json({status: 100,message: "Error found"});}
   });
   }
 
-  exports.deleteterm=function(req, res) {
+  exports.deletelevel=function(req, res) {
     console.log(req.params.id);
-    Academicterm.remove({_id:req.params.id}, function (err) {
+    Academiclevel.remove({_id:req.params.id}, function (err) {
       if (err) return res.json({status: 100,message: "Error found"});
       // deleted at most one tank document
-      res.json({status: 200,message: "termRemoved"});
+      res.json({status: 200,message: "levelRemoved"});
     });
   }
 
-  exports.getATerm=function(req, res) {
+  exports.getALevel=function(req, res) {
   
-    Academicterm.findById(req.params.id, function(err, data) {
+    Academiclevel.findById(req.params.id, function(err, data) {
       if (!err){ 
         res.json({status: 200,data: data});
       } else {return res.json({status: 100,message: "Error found"});}
   });
   }
 
-  exports.updateTerm=function(req, res) {
+  exports.updateLevel=function(req, res) {
     console.log(req.body);
     
-    Academicterm.findOneAndUpdate({_id:req.params.id}, req.body, {upsert: true}, function(err, doc) {
+    Academiclevel.findOneAndUpdate({_id:req.params.id}, req.body, {upsert: true}, function(err, doc) {
         if (err) return res.json({status: 100,message: "Error found"});
         // deleted at most one tank document
-        res.json({status: 200,message: "AcademictermUpdated"});
+        res.json({status: 200,message: "AcademiclevelUpdated"});
     });
     }

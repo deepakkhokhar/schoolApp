@@ -23,21 +23,16 @@
                 <tr>
                   <th>SNo</th>
                   <th>Name</th>
-                  <th>Action</th>
+                  <th>Level</th>
+                  <!--<th>Action</th>-->
                 </tr>
               </thead>
               <tbody>
                 <tr  *ngFor="let streamlisting of streamlistingData; let i = index">
-                  
                   <td>{{i+1}}</td>
                   <td>{{streamlisting.name}}</td>
-                  
-                  
-                  <td>
-                    
-                    <a [routerLink]="['/academics/subject/',streamlisting._id]">Subject</a>
-                   </td>
-                </tr>
+                  <td>{{streamlisting.level.LevelName}}</td>
+                </tr>   
                
               </tbody>
             </table>

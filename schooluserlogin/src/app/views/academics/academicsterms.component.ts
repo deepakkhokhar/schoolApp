@@ -13,7 +13,7 @@ export class AcademicsTermsComponent  implements OnInit {
   ngOnInit() { 
     var retrievedObject = localStorage.getItem('userInfo');
       var user=JSON.parse(retrievedObject);
-      this.http.get<any>('http://localhost:3000/academic/getterm/'+user._id).subscribe(data => {
+      this.http.get<any>('http://localhost:3000/academic/getlevel/'+user._id).subscribe(data => {
      console.log(data);
      if(data.status==200){
        this.termlistingData=data.data;
@@ -22,8 +22,8 @@ export class AcademicsTermsComponent  implements OnInit {
    }
 
    deleteAcademicsTerm(_id: string) {
-    if(confirm("Are you sure to delete this terms?")) {
-      this.http.delete<any>('http://localhost:3000/academic/deleteterm/'+_id).subscribe(data => {
+    if(confirm("Are you sure to delete this level?")) {
+      this.http.delete<any>('http://localhost:3000/academic/deletelevel/'+_id).subscribe(data => {
 		  console.log(data);
 			if(data.status==100){
 			
@@ -35,7 +35,7 @@ export class AcademicsTermsComponent  implements OnInit {
 			}else{
 				this.alertsDismiss.push({
 				  type: 'success',
-				  msg: `Term Removed Sucessfully.`,
+				  msg: `Level Removed Sucessfully.`,
 				  timeout: 5000
 				});
 				

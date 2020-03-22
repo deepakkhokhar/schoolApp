@@ -10,24 +10,25 @@ export class AcademicsSubjectComponent  implements OnInit {
   
     public subjectlistingData;
     alertsDismiss: any = [];
-    public streamId;
+    public levelId;
     public arrayObj:any;
     constructor(private http: HttpClient,private router:Router,private activatedRoute:ActivatedRoute) {}
     ngOnInit() { 
       var retrievedObject = localStorage.getItem('userInfo');
         var user=JSON.parse(retrievedObject);
         
-        this.streamId=this.activatedRoute.snapshot.paramMap.get("streamId");
-        this.http.get<any>('http://localhost:3000/academic/getsubject/'+this.streamId).subscribe(data => {
-       console.log(data.data.stream);
+        this.levelId=this.activatedRoute.snapshot.paramMap.get("levelId");
+        this.http.get<any>('http://localhost:3000/academic/getsubject/'+this.levelId).subscribe(data => {
+       console.log(data.data);
        if(data.status==200){ 
-        for(let index=0;index<data.data.stream.length;index++){
+        this.subjectlistingData=data.data.subjects;
+       /* for(let index=0;index<data.data.stream.length;index++){
             this.arrayObj = data.data.stream[index];
-            if(this.arrayObj._id==this.streamId){
+            if(this.arrayObj._id==this.levelId){
                this.subjectlistingData=this.arrayObj.subjects;
             }
             
-        }
+        }*/
        }
       })
      }

@@ -10,6 +10,8 @@ import { NgForm } from '@angular/forms';
 export class AcademicsYearAddComponent  implements OnInit {
   alertsDismiss: any = [];
   yearNameVal:any;
+  frommonthVal:any;
+  tomonthVal:any;
   yearId:any;
   constructor(private http: HttpClient,private router:Router,private activatedRoute:ActivatedRoute) {}
   ngOnInit() { 
@@ -21,6 +23,8 @@ export class AcademicsYearAddComponent  implements OnInit {
        if(data.status==200){
         
          this.yearNameVal=data.data.yearName;
+         this.frommonthVal=data.data.frommonth;
+         this.tomonthVal=data.data.tomonth;
          
        }
       })

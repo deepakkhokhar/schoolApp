@@ -23,6 +23,8 @@
                 <tr>
                   <th>SNo</th>
                   <th>Year</th>
+                  <th>From month</th>
+                  <th>To month</th>
                   <th>Created Date</th>
                   <th>Action</th>
                 </tr>
@@ -33,6 +35,8 @@
                   <td>{{i+1}}</td>
                   <td>{{yearlisting.yearName}}</td>
                   <td>{{yearlisting.createdAt| date}}</td>
+                  <td>{{yearlisting.frommonth}}</td>
+                  <td>{{yearlisting.tomonth}}</td>
                   <td>
                     <a [routerLink]="['/academics/edityear/',yearlisting._id]"><i class="cui-pencil icons font-xl mt-2"></i></a>
                     <i  (click)="deleteAcademicsYear(yearlisting._id,yearlisting.yearName)" style="cursor:pointer;" class="cui-trash icons font-xl mt-2"></i>

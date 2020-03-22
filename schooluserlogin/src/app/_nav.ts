@@ -94,13 +94,13 @@ var retrievedObject = localStorage.getItem('userInfo');
               icon: 'icon-puzzle'
             },
             {
-              name: 'Academic Terms listing',
-              url: '/academics/termslisting',
+              name: 'Academic level listing',
+              url: '/academics/levellisting',
               icon: 'icon-puzzle'
             },
             {
-              name: 'Add Academic Terms',
-              url: '/academics/addterms',
+              name: 'Add Academic level',
+              url: '/academics/addlevel',
               icon: 'icon-puzzle'
             }
           
@@ -279,13 +279,13 @@ var retrievedObject = localStorage.getItem('userInfo');
               icon: 'icon-puzzle'
             },
             {
-              name: 'Academic Terms listing',
-              url: '/academics/termslisting',
+              name: 'Academic level listing',
+              url: '/academics/levellisting',
               icon: 'icon-puzzle'
             },
             {
-              name: 'Add Academic Terms',
-              url: '/academics/addterms',
+              name: 'Add Academic level',
+              url: '/academics/addlevel',
               icon: 'icon-puzzle'
             }
           
@@ -406,13 +406,13 @@ var retrievedObject = localStorage.getItem('userInfo');
               icon: 'icon-puzzle'
             },
             {
-              name: 'Academic Terms listing',
-              url: '/academics/termslisting',
+              name: 'Academic level listing',
+              url: '/academics/levellisting',
               icon: 'icon-puzzle'
             },
             {
-              name: 'Add Academic Terms',
-              url: '/academics/addterms',
+              name: 'Add Academic level',
+              url: '/academics/addlevel',
               icon: 'icon-puzzle'
             }
           
@@ -591,13 +591,13 @@ var retrievedObject = localStorage.getItem('userInfo');
               icon: 'icon-puzzle'
             },
             {
-              name: 'Academic Terms listing',
-              url: '/academics/termslisting',
+              name: 'Academic level listing',
+              url: '/academics/levellisting',
               icon: 'icon-puzzle'
             },
             {
-              name: 'Add Academic Terms',
-              url: '/academics/addterms',
+              name: 'Add Academic level',
+              url: '/academics/addlevel',
               icon: 'icon-puzzle'
             }
           

@@ -10,10 +10,10 @@ import { NgForm } from '@angular/forms';
 export class AcademicsSubjectAddComponent  implements OnInit {
   alertsDismiss: any = [];
   classnameVal:any;
-  streamId:any;
+  levelId:any;
   constructor(private http: HttpClient,private router:Router,private activatedRoute:ActivatedRoute) {}
   ngOnInit() { 
-    this.streamId=this.activatedRoute.snapshot.paramMap.get("streamId");
+    this.levelId=this.activatedRoute.snapshot.paramMap.get("levelId");
    
   }
 
@@ -43,7 +43,7 @@ export class AcademicsSubjectAddComponent  implements OnInit {
       
     var retrievedObject = localStorage.getItem('userInfo');
       var user=JSON.parse(retrievedObject);
-      this.http.post<any>('http://localhost:3000/academic/addsubject/'+this.streamId,value).subscribe(data => {
+      this.http.post<any>('http://localhost:3000/academic/addsubject/'+this.levelId,value).subscribe(data => {
 		    if(data.status==200){
            
           this.alertsDismiss.push({
@@ -52,7 +52,7 @@ export class AcademicsSubjectAddComponent  implements OnInit {
             timeout: 3000
           });
           
-          this.router.navigate( [ '/academics/subject',this.streamId ] );   
+          this.router.navigate( [ '/academics/subject',this.levelId ] );   
             
         }
         },error=>{

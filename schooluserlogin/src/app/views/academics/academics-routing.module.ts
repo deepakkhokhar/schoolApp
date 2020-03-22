@@ -57,14 +57,14 @@ const routes: Routes = [
           title: 'Add Academics Stream'
         }
       },{
-        path: 'subject/:streamId',
+        path: 'subject/:levelId',
 		    component: AcademicsSubjectComponent,
         data: {
           title: 'Academics Subject'
         }
       },
       {
-        path: 'addsubject/:streamId',
+        path: 'addsubject/:levelId',
 		    component: AcademicsSubjectAddComponent,
         data: {
           title: 'Add Academics Subject'
@@ -92,24 +92,24 @@ const routes: Routes = [
         }
       },
       {
-        path: 'termslisting',
+        path: 'levellisting',
 		    component: AcademicsTermsComponent,
         data: {
-          title: 'Add Academics Terms'
+          title: 'Add Academics Level'
         }
       },
       {
-        path: 'addterms',
+        path: 'addlevel',
 		    component: AcademicsTermsAddComponent,
         data: {
-          title: 'Add Academics Terms'
+          title: 'Add Academics Level'
         }
       },
       {
-        path: 'editterm/:id',
+        path: 'editlevel/:id',
 		    component: AcademicsTermsAddComponent,
         data: {
-          title: 'Update Academics Terms'
+          title: 'Update Academics Level'
         }
       }
     ]
