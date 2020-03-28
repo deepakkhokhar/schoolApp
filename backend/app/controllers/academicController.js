@@ -183,3 +183,23 @@ exports.updateYear=function(req, res) {
         res.json({status: 200,message: "AcademiclevelUpdated"});
     });
     }
+
+    exports.addstudent=function(req,res){
+      console.log(req.body);
+      console.log(req.params.streamId);
+      
+      db.collection('academics').updateOne({'stream._id':ObjectId(req.params.streamId)},{$push:{'stream.$.students':{"firstName":req.body.formvalue.firstName,"lastName":req.body.formvalue.lastName,"fatherfirstName":req.body.formvalue.fatherfirstName,"fatherlastName":req.body.formvalue.fatherlastName,"motherfirstName":req.body.formvalue.motherfirstName,"motherlastName":req.body.formvalue.motherlastName,"isDeleted":false,"createdAt":new Date()}}}, function(err,result) {
+        
+        if (err) return res.json({status: 100,message: "Error found"});
+        res.json({status: 200,message: "AcademicUpdated"});
+    })
+    }
+
+    exports.getstudent=function(req,res){
+      db.collection('academics').aggregate([{"$match" : {"stream" : {"$elemMatch" : {"_id":ObjectId(req.params.streamId)}}}},{"$project" : {"className" : 1,"stream" : {"$filter" : {"input" : "$stream","as" : "stream","cond" : {"$and" : [{ "$eq" : [ "$$stream._id", ObjectId(req.params.streamId) ] }]}}}}}]).toArray(function(err, data) {
+        if (!err){ 
+          res.json({status: 200,data: data});
+        } else {return res.json({status: 100,message: "Error found"});}
+      });
+    }
+

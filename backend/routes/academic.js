@@ -17,6 +17,9 @@ router.get("/getstream/:classId", AcademicController.getstream);
 router.post("/addsubject/:levelId", AcademicController.addsubject);
 router.get("/getsubject/:levelId", AcademicController.getsubject);
 
+router.post("/addstudent/:streamId", AcademicController.addstudent);
+router.get("/getstudent/:streamId", AcademicController.getstudent);
+
 router.post("/addyear", AcademicController.addyear);
 router.get("/getyear/:id", AcademicController.getyear);
 router.delete("/deleteyear/:id", AcademicController.deleteyear);

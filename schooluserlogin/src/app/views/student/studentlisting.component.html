@@ -1,0 +1,54 @@
+<div class="animated fadeIn">
+
+    <div class="row">
+     
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-align-justify"></i>Student listing
+            <div class="card-header-actions">
+              <a   [routerLink]="['/student/add']">
+              <small class="text-muted">Add Student</small>
+            </a>
+          </div>
+          </div>
+          
+          <div class="card-body">
+            <div *ngFor="let alert of alertsDismiss">
+              <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+              </div>
+              
+            <table class="table  table-striped">
+              <thead>
+                <tr>
+                  <th>SNo</th>
+                  <th>Name</th>
+                  <th>Created Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+              <!--  <tr  *ngFor="let classlisting of classlistingData; let i = index">
+                  
+                  <td>{{i+1}}</td>
+                  <td>{{classlisting.className}}</td>
+                  
+                  <td>{{classlisting.createdAt| date}}</td>
+                  
+                  <td>
+                    <a [routerLink]="['/academics/edit/',classlisting._id]"><i class="cui-pencil icons font-xl mt-2"></i></a>
+                    <i  (click)="deleteAcademics(classlisting._id,classlisting.className)" style="cursor:pointer;" class="cui-trash icons font-xl mt-2"></i>
+                    <a [routerLink]="['/academics/stream/',classlisting._id]">Stream</a>
+                   </td>
+                </tr>-->
+               
+              </tbody>
+            </table>
+            
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  
+  

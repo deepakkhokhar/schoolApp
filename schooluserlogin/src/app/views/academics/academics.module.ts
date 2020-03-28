@@ -15,6 +15,8 @@ import { AcademicsYearComponent } from './academicsyear.component';
 import { AcademicsYearAddComponent } from './academicsyearadd.component';
 import { AcademicsTermsComponent } from './academicsterms.component';
 import { AcademicsTermsAddComponent } from './academicstermsadd.component';
+import { StudentlistingComponent } from './studentlisting.component';
+import { StudentaddComponent } from './studentadd.component';
 
 @NgModule({
   imports: [
@@ -23,6 +25,6 @@ import { AcademicsTermsAddComponent } from './academicstermsadd.component';
     AlertModule.forRoot(),
     ButtonsModule.forRoot()
   ],
-  declarations: [ AcademicsClassComponent,AcademicsClassAddComponent,AcademicsStreamComponent,AcademicsStreamAddComponent,AcademicsSubjectComponent,AcademicsSubjectAddComponent,AcademicsYearComponent,AcademicsYearAddComponent,AcademicsTermsComponent,AcademicsTermsAddComponent ]
+  declarations: [ AcademicsClassComponent,AcademicsClassAddComponent,AcademicsStreamComponent,AcademicsStreamAddComponent,AcademicsSubjectComponent,AcademicsSubjectAddComponent,AcademicsYearComponent,AcademicsYearAddComponent,AcademicsTermsComponent,AcademicsTermsAddComponent,StudentlistingComponent,StudentaddComponent ]
 })
 export class AcademicsModule { }

@@ -10,6 +10,8 @@ import { AcademicsYearComponent } from './academicsyear.component';
 import { AcademicsYearAddComponent } from './academicsyearadd.component';
 import { AcademicsTermsComponent } from './academicsterms.component';
 import { AcademicsTermsAddComponent } from './academicstermsadd.component';
+import { StudentlistingComponent } from './studentlisting.component';
+import { StudentaddComponent } from './studentadd.component';
 
 const routes: Routes = [
   {
@@ -41,6 +43,20 @@ const routes: Routes = [
 		    component: AcademicsClassAddComponent,
         data: {
           title: 'Update Academics Class'
+        }
+      },
+      {
+        path: 'addstudent/:streamId',
+		    component: StudentaddComponent,
+        data: {
+          title: 'Academics Add Student'
+        }
+      },
+      {
+        path: 'student/:streamId',
+		    component: StudentlistingComponent,
+        data: {
+          title: 'Academics Student'
         }
       },
       {

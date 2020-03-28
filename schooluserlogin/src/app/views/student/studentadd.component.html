@@ -1,0 +1,179 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <strong>Add student</strong>
+            <small>Form</small>
+          </div>
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="submit(f.value)">
+                <div *ngFor="let alert of alertsDismiss">
+                    <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="Name">FirstName</label>
+                        <input type="text"  id="firstName" placeholder="firstname"  [(ngModel)]='firstNameVal' name="firstName" class="form-control" #firstName="ngModel" minlength="3" maxlength="30"  required >
+                      </div>
+                      
+                      <div *ngIf="firstName.touched && ! firstName.valid">
+                              <div *ngIf="firstName.errors.required">
+                                firstName is required
+                              </div>
+                              <div *ngIf="firstName.errors.minlength">
+                                firstName minimum length is
+                                {{ firstName.errors.minlength.requiredLength }}
+                              </div>
+                              <div *ngIf="firstName.errors.maxlength">
+                                firstName maximum length is
+                                {{ firstName.errors.maxlength.requiredLength }}
+                              </div>
+                            </div>
+                      
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="Name">LastName</label>
+                            <input type="text"  id="lastName" placeholder="lastname"  [(ngModel)]='lastNameVal' name="lastName" class="form-control" #lastName="ngModel" minlength="3" maxlength="30"  required >
+                          </div>
+                          
+                          <div *ngIf="lastName.touched && ! lastName.valid">
+                                  <div *ngIf="lastName.errors.required">
+                                    lastName is required
+                                  </div>
+                                  <div *ngIf="lastName.errors.minlength">
+                                    lastName minimum length is
+                                    {{ lastName.errors.minlength.requiredLength }}
+                                  </div>
+                                  <div *ngIf="lastName.errors.maxlength">
+                                    lastName maximum length is
+                                    {{ lastName.errors.maxlength.requiredLength }}
+                                  </div>
+                                </div>
+                      
+                    </div>
+                  </div><!--/.row-->
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="Name">Father FirstName</label>
+                        <input type="text"  id="fatherfirstName" placeholder="father firstname"  [(ngModel)]='fatherfirstNameVal' name="fatherfirstName" class="form-control" #fatherfirstName="ngModel" minlength="3" maxlength="30"  required >
+                      </div>
+                      
+                      <div *ngIf="fatherfirstName.touched && ! fatherfirstName.valid">
+                              <div *ngIf="fatherfirstName.errors.required">
+                                firstName is required
+                              </div>
+                              <div *ngIf="fatherfirstName.errors.minlength">
+                                firstName minimum length is
+                                {{ firstName.errors.minlength.requiredLength }}
+                              </div>
+                              <div *ngIf="fatherfirstName.errors.maxlength">
+                                firstName maximum length is
+                                {{ firstName.errors.maxlength.requiredLength }}
+                              </div>
+                            </div>
+                      
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="Name">LastName</label>
+                            <input type="text"  id="fatherlastName" placeholder="father lastname"  [(ngModel)]='fatherlastNameVal' name="fatherlastName" class="form-control" #fatherlastName="ngModel" minlength="3" maxlength="30"  required >
+                          </div>
+                          
+                          <div *ngIf="fatherlastName.touched && ! fatherlastName.valid">
+                                  <div *ngIf="fatherlastName.errors.required">
+                                    lastName is required
+                                  </div>
+                                  <div *ngIf="fatherlastName.errors.minlength">
+                                    lastName minimum length is
+                                    {{ fatherlastName.errors.minlength.requiredLength }}
+                                  </div>
+                                  <div *ngIf="fatherlastName.errors.maxlength">
+                                    lastName maximum length is
+                                    {{ fatherlastName.errors.maxlength.requiredLength }}
+                                  </div>
+                                </div>
+                      
+                    </div>
+                  </div><!--/.row-->
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label for="Name">Mother FirstName</label>
+                        <input type="text"  id="motherfirstName" placeholder="mother firstname"  [(ngModel)]='motherfirstNameVal' name="motherfirstName" class="form-control" #motherfirstName="ngModel" minlength="3" maxlength="30"  required >
+                      </div>
+                      
+                      <div *ngIf="motherfirstName.touched && ! motherfirstName.valid">
+                              <div *ngIf="motherfirstName.errors.required">
+                              Mother firstName is required
+                              </div>
+                              <div *ngIf="motherfirstName.errors.minlength">
+                                firstName minimum length is
+                                {{ motherfirstName.errors.minlength.requiredLength }}
+                              </div>
+                              <div *ngIf="motherfirstName.errors.maxlength">
+                                firstName maximum length is
+                                {{ motherfirstName.errors.maxlength.requiredLength }}
+                              </div>
+                            </div>
+                      
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="Name">LastName</label>
+                            <input type="text"  id="motherlastName" placeholder="mother lastname"  [(ngModel)]='motherlastNameVal' name="motherlastName" class="form-control" #motherlastName="ngModel" minlength="3" maxlength="30"  required >
+                          </div>
+                          
+                          <div *ngIf="motherlastName.touched && ! motherlastName.valid">
+                                  <div *ngIf="motherlastName.errors.required">
+                                    lastName is required
+                                  </div>
+                                  <div *ngIf="motherlastName.errors.minlength">
+                                    lastName minimum length is
+                                    {{ motherlastName.errors.minlength.requiredLength }}
+                                  </div>
+                                  <div *ngIf="motherlastName.errors.maxlength">
+                                    lastName maximum length is
+                                    {{ motherlastName.errors.maxlength.requiredLength }}
+                                  </div>
+                                </div>
+                      
+                    </div>
+                  </div><!--/.row-->
+                  <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label for="city">Email Address</label>
+                        <input type="text" class="form-control" [(ngModel)]='emailaddressVal' id="emailaddress" placeholder="Enter your email address" #emailaddress="ngModel" required name="emailaddress">
+                        <div *ngIf="emailaddress.touched && ! emailaddress.valid">
+                                <div *ngIf="emailaddress.errors.required">
+                                  Email Address is required
+                                </div>
+                                
+                              </div>
+                      </div>
+                    <div class="form-group col-sm-6">
+                        <label for="password">Password</label>
+                        <input type="text" class="form-control" [(ngModel)]='passwordVal' id="password" placeholder="Enter your password"   #password="ngModel"  name="password" required>
+                        <div *ngIf="password.touched && ! password.valid">
+                            <div *ngIf="password.errors.required">
+                                  Password is required
+                            </div>
+                        </div>
+                    </div>
+                    
+                  </div><!--/.row-->
+                  
+                  
+                  <div class="card-footer">
+                    <button type="submit"  [disabled]="!f.valid"  class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                   <a  [routerLink]="['/student/listing']" > <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Cancel</button></a>
+                  </div>
+            </form>
+        </div>
+      </div><!--/.col-->
+    </div>
+    </div>
+    </div>

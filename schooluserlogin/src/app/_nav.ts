@@ -36,28 +36,19 @@ var retrievedObject = localStorage.getItem('userInfo');
               icon: 'icon-puzzle'
             }
           ]
-        },{
+        }/*,{
           name: 'Students',
           url: '/student',
           icon: 'icon-puzzle',
           children: [
-            {
-              name: 'Student registrations',
-              url: '/student/registration',
-              icon: 'icon-puzzle'
-            },
+
             {
               name: 'Manage Students',
               url: '/student/listing',
               icon: 'icon-puzzle'
-            },
-            {
-              name: 'Parents',
-              url: '/student/parentlisting',
-              icon: 'icon-puzzle'
             }
           ]
-        },{
+        }*/,{
           name: 'Academics',
           url: '/academics',
           icon: 'icon-puzzle',
@@ -221,28 +212,24 @@ var retrievedObject = localStorage.getItem('userInfo');
           url: '/dashboard',
           icon: 'icon-speedometer'
         },
-        {
+       /* {
           name: 'Students',
           url: '/student',
           icon: 'icon-puzzle',
           children: [
-            {
-              name: 'Student registrations',
-              url: '/student/registration',
-              icon: 'icon-puzzle'
-            },
             {
               name: 'Manage Students',
               url: '/student/listing',
               icon: 'icon-puzzle'
             },
             {
-              name: 'Parents',
-              url: '/student/parentlisting',
+              name: 'Add Students',
+              url: '/student/addstudent',
               icon: 'icon-puzzle'
             }
           ]
-        },{
+        },*/
+        {
           name: 'Academics',
           url: '/academics',
           icon: 'icon-puzzle',
@@ -348,28 +335,18 @@ var retrievedObject = localStorage.getItem('userInfo');
           url: '/dashboard',
           icon: 'icon-speedometer'
         },
-        {
+        /*{
           name: 'Students',
           url: '/student',
           icon: 'icon-puzzle',
           children: [
             {
-              name: 'Student registrations',
-              url: '/student/registration',
-              icon: 'icon-puzzle'
-            },
-            {
               name: 'Manage Students',
               url: '/student/listing',
               icon: 'icon-puzzle'
-            },
-            {
-              name: 'Parents',
-              url: '/student/parentlisting',
-              icon: 'icon-puzzle'
             }
           ]
-        },{
+        },*/{
           name: 'Academics',
           url: '/academics',
           icon: 'icon-puzzle',
@@ -533,28 +510,19 @@ var retrievedObject = localStorage.getItem('userInfo');
           url: '/dashboard',
           icon: 'icon-speedometer'
         },
-        {
+       /* {
           name: 'Students',
           url: '/student',
           icon: 'icon-puzzle',
           children: [
-            {
-              name: 'Student registrations',
-              url: '/student/registration',
-              icon: 'icon-puzzle'
-            },
+
             {
               name: 'Manage Students',
               url: '/student/listing',
               icon: 'icon-puzzle'
-            },
-            {
-              name: 'Parents',
-              url: '/student/parentlisting',
-              icon: 'icon-puzzle'
             }
           ]
-        },{
+        },*/{
           name: 'Academics',
           url: '/academics',
           icon: 'icon-puzzle',
@@ -569,17 +537,7 @@ var retrievedObject = localStorage.getItem('userInfo');
               url: '/academics/addclass',
               icon: 'icon-puzzle'
             },
-            
-           /* {
-              name: 'Stream listing',
-              url: '/academics/streamlisting',
-              icon: 'icon-puzzle'
-            },
-            {
-              name: 'Add Stream',
-              url: '/academics/addstream',
-              icon: 'icon-puzzle'
-            },*/
+
             {
               name: 'Academic Year listing',
               url: '/academics/yearlisting',
