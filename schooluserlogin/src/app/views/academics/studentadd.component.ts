@@ -11,35 +11,61 @@ export class StudentaddComponent  implements OnInit {
   alertsDismiss: any = [];
   classnameVal:any;
   streamId:any;
+  studentId:any;
+  studentdetail:any;
+  stdtId:any;
+  fatherfirstNameVal:any;firstNameVal:any;lastNameVal:any;fatherlastNameVal:any;
+  motherfirstNameVal:any;motherlastNameVal:any;emailaddressVal:any;passwordVal:any;
+  statusVal:boolean=true;
+  createdAt:any;
   constructor(private http: HttpClient,private router:Router,private activatedRoute:ActivatedRoute) {}
   ngOnInit() { 
     this.streamId=this.activatedRoute.snapshot.paramMap.get("streamId");
-    /*if(this.classId){
+    this.studentId=this.activatedRoute.snapshot.paramMap.get("studentId");
+    if(this.studentId){
       
-      this.http.get<any>('http://localhost:3000/academic/getAClass/'+this.classId).subscribe(data => {
+      this.http.get<any>('http://localhost:3000/academic/getStudentClass/'+this.streamId+"/"+this.studentId).subscribe(data => {
        
        if(data.status==200){
+        data.data[0].stream[0].students.forEach(student => {
+         if(student.id==this.studentId){
+          console.log(student);
+          this.stdtId=student.id;
+          this.createdAt=student.createdAt;
+          this.firstNameVal=student.firstName;
+          this.lastNameVal=student.lastName;
+          this.fatherfirstNameVal=student.fatherfirstName;
+          this.fatherlastNameVal=student.fatherlastName;
+          this.motherfirstNameVal=student.motherfirstName;
+          this.motherlastNameVal=student.motherlastName;
+          this.emailaddressVal=student.emailaddress;
+          this.passwordVal=student.password;
+          this.statusVal=student.isActive;
+         }
+        });
         
-         this.classnameVal=data.data.className;
          
        }
       })
-    } */
+     
+    } 
   }
 
   submit(value: any) {
-      console.log(value);
-   /* if(this.classId){
-      this.http.post<any>('http://localhost:3000/academic/updateClass/'+this.classId, value).subscribe(data => {
+      
+    if(this.studentId){
+      value.studentId=this.stdtId;
+      value.createdAt=this.createdAt;
+      this.http.post<any>('http://localhost:3000/academic/updateStudentClass/'+this.streamId+"/"+this.studentId, {'formvalue':value}).subscribe(data => {
       if(data.status==200){
          
         this.alertsDismiss.push({
           type: 'success',
-          msg: `Class updated successfully`,
+          msg: `Student updated successfully`,
           timeout: 3000
         });
         
-        this.router.navigate( [ '/academics/classlisting' ] );  
+        this.router.navigate( [ '/academics/student',this.streamId ] );   
           
       }
       },error=>{
@@ -50,7 +76,7 @@ export class StudentaddComponent  implements OnInit {
       timeout: 5000
     });
   })
-    }else{*/
+    }else{
       
     var retrievedObject = localStorage.getItem('userInfo');
       var user=JSON.parse(retrievedObject);
@@ -59,7 +85,7 @@ export class StudentaddComponent  implements OnInit {
            
           this.alertsDismiss.push({
             type: 'success',
-            msg: `student created successfully`,
+            msg: `Student created successfully`,
             timeout: 3000
           });
           
@@ -74,6 +100,6 @@ export class StudentaddComponent  implements OnInit {
         timeout: 5000
       });
     })
- // }
+  }
   }
 }

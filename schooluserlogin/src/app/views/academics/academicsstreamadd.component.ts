@@ -40,7 +40,7 @@ export class AcademicsStreamAddComponent  implements OnInit {
             timeout: 3000
           });
           
-          this.router.navigate( [ '/academics/classlisting' ] );   
+          this.router.navigate( [ '/academics/stream/',this.classId ] );   
             
         }
         },error=>{

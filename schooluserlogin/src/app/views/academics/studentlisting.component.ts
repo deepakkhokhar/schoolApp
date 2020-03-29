@@ -25,5 +25,31 @@ export class StudentlistingComponent  implements OnInit {
       });
    }
 
+   deleteAcademicsStudent(id:string,streamId:string) {
+    if(confirm("Are you sure to delete this Student?")) {
+      this.http.delete<any>('http://localhost:3000/academic/deletestudent/'+id+'/'+streamId).subscribe(data => {
+		  console.log(data);
+			if(data.status==100){
+			
+        this.alertsDismiss.push({
+				  type: 'danger',
+				  msg: `Error found`,
+				  timeout: 5000
+				});			
+			}else{
+				this.alertsDismiss.push({
+				  type: 'success',
+				  msg: `Student Removed Sucessfully.`,
+				  timeout: 5000
+				});
+				
+				
+			}
+        },error=>{
+			console.log("Error", error); 
+		}) 
+    }
+  }
+
   
 }

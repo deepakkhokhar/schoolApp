@@ -26,6 +26,7 @@
                   <th>Father Name</th>
                   <th>Mother Name</th>
                   <th>Created Date</th>
+                  <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -36,11 +37,12 @@
                   <td>{{studentlisting.firstName}} {{studentlisting.lastName}}</td>
                   <td>{{studentlisting.fatherfirstName}} {{studentlisting.fatherlastName}}</td>
                   <td>{{studentlisting.motherfirstName}} {{studentlisting.motherlastName}}</td>
-                  
-                  <td>
-                    {{studentlisting.createdAt|date}}
+                  <td>{{studentlisting.createdAt|date}}</td>
+                  <td><div *ngIf=studentlisting.isActive >Active</div><div *ngIf=!studentlisting.isActive >Inactive</div></td>
+                   <td>
+                    <a  [routerLink]="['/academics/updatestudent',streamId,studentlisting.id]">Edit</a>
+                    <i  (click)="deleteAcademicsStudent(studentlisting.id,streamId)" style="cursor:pointer;" class="cui-trash icons font-xl mt-2"></i>
                    </td>
-                   <td></td>
                 </tr>
                
               </tbody>

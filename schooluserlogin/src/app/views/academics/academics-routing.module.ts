@@ -53,6 +53,13 @@ const routes: Routes = [
         }
       },
       {
+        path: 'updatestudent/:streamId/:studentId',
+		    component: StudentaddComponent,
+        data: {
+          title: 'Academics Update Student'
+        }
+      },
+      {
         path: 'student/:streamId',
 		    component: StudentlistingComponent,
         data: {
