@@ -80,6 +80,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/student/student.module').then(m => m.StudentModule)
       },
       {
+        path: 'event',
+        loadChildren: () => import('./views/event/event.module').then(m => m.EventModule)
+      },
+      {
         path: 'icons',
         loadChildren: () => import('./views/icons/icons.module').then(m => m.IconsModule)
       },
