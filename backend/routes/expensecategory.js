@@ -1,5 +1,5 @@
 var ExpenseCategoryController = require("../app/controllers/ExpenseCategoryController");
-ExpenseCategory=require("../app/models/ExpenseCategory");
+ExpenseCategory=require("../app/models/Expensecategory");
 
 var router = express.Router();
 router.post("/addExpenseCategory", ExpenseCategoryController.addExpenseCategory);
