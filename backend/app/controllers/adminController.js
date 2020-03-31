@@ -31,7 +31,8 @@ exports.login = function(req, res) {
 
 
 //REGISTER NEW USER
-exports.register = function(req, res) {
+exports.registerAdmin = function(req, res) {
+   console.log(req.body);
    const {firstName,lastName,userName,password,role,email}=req.body;
   
     if (!firstName || !lastName || !userName|| !password|| !role) {
@@ -48,6 +49,7 @@ exports.register = function(req, res) {
        Admin.findOne({$or: [{email: email},{userName:userName}]}).exec(function(err, admin) {
         if (admin){
           if(admin.email == email) {
+          	 console.log(req.body);
               return res.json({
               status: 401,
               message: "Email is ready taken!"
@@ -61,7 +63,8 @@ exports.register = function(req, res) {
         }else{
       //Everything is fine
       //set Request values to  model attributes 
-      const adminUserData = {firstName ,lastName,email,userName,role};
+      const adminUserData ={firstName,lastName,userName,password,role,email};
+      console.log(adminUserData);
       //save the model data values
       const adminModel = new Admin(adminUserData);
       adminModel.save(function(err, admin) {
@@ -87,14 +90,12 @@ exports.register = function(req, res) {
     }
   };
 
-
-    exports.getAllAdmins=function (req,res){
-    Admin.find({})
-    .exec(function(err, admin) {
+   exports.getAllAdmins=function (req,res){
+    Admin.find({}).select(" _id userName firstName lastName email role ").exec(function(err, admin) {
       if (err) return res.json({status:500,message:'Server error!'});
       else {
         return res.json({
-          data: admins,
+          data: admin,
           status: 200
         });
       }
