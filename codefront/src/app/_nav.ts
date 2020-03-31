@@ -3,13 +3,32 @@ var retrievedObject = localStorage.getItem('userInfo');
     var user=JSON.parse(retrievedObject);
     
     var adminarray;
-    if(user && user.role==2){
+    if(user && user.role==1){
       adminarray=[
         {
           name: 'Dashboard',
           url: '/dashboard',
           icon: 'icon-speedometer'
         },
+
+        {
+          name: 'Settings',
+          url: '/admin',
+          icon: 'icon-settings',
+          children: [
+            {
+              name: 'Manager Users',
+              url: '/admin',
+              icon: 'icon-people'
+            }
+            // {
+            //   name: 'Add User',
+            //   url: '/admin/register',
+            //   icon: 'icon-plus'
+            // }
+          ]
+        },
+
         {
           name: 'School',
           url: '/school',
