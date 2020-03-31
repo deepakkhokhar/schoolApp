@@ -1,34 +1,20 @@
-const  jwt  =  require('jsonwebtoken');
-//const  bcrypt  =  require('bcryptjs');
-const saltRounds = 10;
-
-exports.login = function(req, res) {
-	const body = req.body;
-	console.log(body);
-	Admin.findOne({ userName: body.userName }, function(err, user) {
-		if (err) {
-		  res.json({status: 100,message: "Error found"});
-		}
-		if (user) {
-		 if(user.password==body.password){
-			 jwt.sign({userid:user._id  }, "UserDetail",{ expiresIn:'1m' },function(err, token) {
-			  console.log("test"+token,user._id);
-			  
-			  res.json({status: 200,message: "Userfound",user:user,token:token});
-			});
-			 
-		 }
-		
-		}else{
-		 res.json({status: 201,message: "NoUserfound"});	
-		}
-	});
-  
- /* var token = jwt.sign({userID: admin.id}, 'usertoken', {expiresIn: '2h'});
-  console.log(token);
-  res.send({token});*/
+ exports.login= (req, res) => {
+    const  userName  =  req.body.username;
+    const  password  =  req.body.password;
+    Admin.findOne({userName: userName,isDeleted:false,isActive:true}).exec( (err, user)=>{
+        if (err) return   res.json({status:500,message:'Server error!'});
+        if (!user) return res.json({status:404,message:'Incorrect username or Not authorized!'});
+         //console.log(user)
+        //const result  =  bcrypt.compareSync(password, user.password);
+        if(password!==user.password) return  res.json({status:401 ,message:'You entered wrong Password'});              
+         const userToken = user.generateAuthToken();
+         
+         const userinfo={fullName: `${user.firstName} ${user.lastName}`,isDeleted:user.isDeleted,role:user.role,_id:user._id};
+       console.log(userinfo);
+       if(!userToken || userToken==null) return res.json({status:500,message:'Authetication server error!'}); 
+        return res.json({status:200,message:"Login successfully!" ,user:userinfo, "token":userToken});
+    });
 };
-
 
 //REGISTER NEW USER
 exports.registerAdmin = function(req, res) {
@@ -46,15 +32,15 @@ exports.registerAdmin = function(req, res) {
     }
     else {
         //find if user exists
-       Admin.findOne({$or: [{email: email},{userName:userName}]}).exec(function(err, admin) {
-        if (admin){
-          if(admin.email == email) {
+       Admin.findOne({$or: [{email: email},{userName:userName}]}).exec(function(err, user) {
+        if (user){
+          if(user.email == email) {
           	 console.log(req.body);
               return res.json({
               status: 401,
               message: "Email is ready taken!"
               });
-          }else if(admin.userName == userName){
+          }else if(user.userName == userName){
               return res.json({
               status: 400,
               message: "Username is ready taken!"
@@ -67,7 +53,7 @@ exports.registerAdmin = function(req, res) {
       console.log(adminUserData);
       //save the model data values
       const adminModel = new Admin(adminUserData);
-      adminModel.save(function(err, admin) {
+      adminModel.save(function(err, user) {
         if(err){
            return res.json({
               status: 500,
@@ -76,9 +62,8 @@ exports.registerAdmin = function(req, res) {
         }else {
 
           return res.json({
-            data: admin,
             status: 200,
-            message: `Admin: ${admin.firstName} ${admin.lastName} is registered successfully  !`
+            message: `Admin: ${user.firstName} ${user.lastName} is registered successfully  !`
           });
         }
       });
@@ -91,13 +76,29 @@ exports.registerAdmin = function(req, res) {
   };
 
    exports.getAllAdmins=function (req,res){
-    Admin.find({}).select(" _id userName firstName lastName email role ").exec(function(err, admin) {
+    Admin.find({isDeleted:false}).select(" _id userName firstName lastName email role updatedAt isActive").exec(function(err, users) {
       if (err) return res.json({status:500,message:'Server error!'});
       else {
         return res.json({
-          data: admin,
+          users: users,
           status: 200
-        });
+        });	
       }
     });
+  }
+
+
+   exports.viewUser=function(req, res) {
+    Admin.findById(req.params.id, function(err, data) {
+      if (!err){ 
+        res.json({status: 200,data: data});
+      } else {return res.json({status: 500,message: "Server Error"});}
+  });
+  }
+
+  exports.updateUser=function(req, res) {
+  Admin.findOneAndUpdate({_id:req.params.id},req.body, {upsert: true}, function(err, doc) {
+      if (err) return res.json({status: 500,message: "Server Error"});
+      res.json({status: 200,message: `User ${doc.firstName} ${doc.lastName} updated successfully `});
+  });
   }
