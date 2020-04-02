@@ -42,6 +42,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+import { AdminUserService } from './views/services/admin-user.service';
+import { AlertService } from './views/services/alert.service';
 
 
 @NgModule({
@@ -68,10 +70,14 @@ import { ChartsModule } from 'ng2-charts';
     LoginComponent,
     RegisterComponent
   ],
-  providers: [{
+  providers: [
+    AdminUserService,
+    AlertService,
+    {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   }],
+ 
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

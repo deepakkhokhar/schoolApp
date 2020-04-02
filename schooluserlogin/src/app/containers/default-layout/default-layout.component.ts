@@ -1,18 +1,34 @@
 import {Component } from '@angular/core';
 import { navItems } from '../../_nav';
 import {Router} from '@angular/router';
-@Component({
+ @Component({
   selector: 'app-dashboard',
   templateUrl: './default-layout.component.html'
 })
 export class DefaultLayoutComponent {
-  constructor(private router:Router) {}
+  userNames:string;
+  getAppYear:any
+  constructor(private router:Router) {
+   const userInfo=JSON.parse(localStorage.getItem('userInfo'));
+   if(userInfo){
+    this.userNames=`${userInfo.firstName} ${userInfo.lastName}`;
+   }
+   
+    this.appYear()
+  }
   public sidebarMinimized = false;
   public navItems = navItems;
 
   toggleMinimize(e) {
     this.sidebarMinimized = e;
   }
+
+appYear(){
+var today = new Date();
+var date = today.getFullYear();
+this.getAppYear=date;
+  }
+
   logout(){
     console.log("function called");
 	localStorage.clear();

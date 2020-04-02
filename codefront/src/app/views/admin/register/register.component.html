@@ -1,0 +1,172 @@
+<div class="animated fadeIn">
+    <div class="row ">
+      <div class="col-sm-8">
+        <div class="card">
+          <div class="card-header">
+            <strong>Add Admin</strong>
+            <small>Form</small>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="registerForm"  (ngSubmit)="onSubmit()" >     
+                <div *ngFor="let alert of alerts">
+                        <alert [type]="alert.type" [dismissOnTimeout]="alert.timeout">{{ alert.msg }}</alert>
+                   </div>
+                
+                <div class="form-group"> 
+                   <div class="input-group ">
+                   <div class="input-group-prepend">
+                     <span class="input-group-text"><i class="icon-user"></i></span>
+                   </div>
+                   <input type="text" class="form-control"  
+                   formControlName="firstName" placeholder="First Name" 
+                   autocomplete="off" required>
+                 </div>
+                 <small 
+                 *ngIf="registerForm.controls['firstName'].hasError('required')
+                  && registerForm.controls['firstName'].touched" 
+                 class="form-error-msg"> Please input your First Name </small>
+                  
+                </div>
+
+                  
+                <div class="form-group"> 
+                    <div class="input-group ">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control"  
+                    formControlName="lastName" placeholder="Last Name" 
+                    autocomplete="off" required>
+                  </div>
+                  <small 
+                  *ngIf="registerForm.controls['lastName'].hasError('required')
+                   && registerForm.controls['lastName'].touched" 
+                  class="form-error-msg"> Please input your Last Name </small>
+                 </div>
+
+                 <div class="form-group"> 
+                    <div class="input-group ">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-envelope-letter"></i></span>
+                    </div>
+                    <input type="email" class="form-control"  
+                    formControlName="email" placeholder="Email" 
+                    autocomplete="off" required>
+                  </div>
+
+                  <small 
+                  *ngIf="registerForm.controls['email'].hasError('email')
+                   && registerForm.controls['email'].touched" 
+                  class="form-error-msg">Invalid Email </small>
+  
+                 </div>
+
+            <div class="form-group"> 
+               <div class="input-group ">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input type="text" class="form-control"  formControlName="userName" placeholder="Username" autocomplete="off" required>
+                 </div>
+                  <small 
+                  *ngIf="registerForm.controls['userName'].hasError('required')
+                   && registerForm.controls['userName'].touched" 
+                  class="form-error-msg"> Please input your Username </small>
+                  <small 
+                  *ngIf="registerForm.controls['userName'].hasError('minlength')
+                   && registerForm.controls['userName'].touched" 
+                  class="form-error-msg">Username must be atleast 4 characters </small>
+            </div>
+
+
+            <div class="form-group"> 
+                <div class="input-group ">
+                     <div class="input-group-prepend">
+                       <span class="input-group-text"><i class="icon-people"></i></span>
+                     </div>
+                      
+                      <select class="form-control"  formControlName="role">
+                          <option value="">--Select User Type--</option>
+                        <option *ngFor="let role of usersRoles" [value]="role.value">
+                            {{role.name}}
+                          </option>
+                    </select>
+ 
+                </div>
+                   <small 
+                   *ngIf="registerForm.controls['role'].hasError('required')
+                    && registerForm.controls['role'].touched" 
+                   class="form-error-msg"> Please Select User Type</small>
+                  
+             </div>
+
+          
+                 
+            <div class=" form-group">
+                 <div class="input-group ">
+                   <div class="input-group-prepend">
+                     <span class="input-group-text"><i class="icon-key"></i></span>
+                   </div>
+                   <input type="password" 
+                   class="form-control" 
+                   formControlName="password"  
+                   placeholder="Password" 
+                   autocomplete="off" required>
+                 
+                </div>
+                <small 
+                *ngIf="registerForm.controls['password'].hasError('required')
+                 && registerForm.controls['password'].touched" 
+                class="form-error-msg"> Please input your password </small>
+
+                <small 
+                *ngIf="registerForm.controls['password'].hasError('minlength')
+                 && registerForm.controls['password'].touched" 
+                class="form-error-msg">Password must be atleast 6 characters </small>
+            </div>
+
+            <div class=" form-group">
+                <div class="input-group ">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-key"></i></span>
+                  </div>
+                  <input 
+                  type="password" 
+                  class="form-control" 
+                  formControlName="confirmPassword"  
+                  placeholder="Confirm Password" 
+                  autocomplete="off" required>
+                
+               </div>
+              
+               <small 
+               *ngIf="registerForm.controls['confirmPassword'].hasError('equalTo')
+                && registerForm.controls['confirmPassword'].touched" 
+               class="form-error-msg">Password mismatch </small>
+           </div>
+           <div class="form-group ">
+            
+            <div *ngIf="isUpdatedRecord">
+                <label for="isActive">Is Active</label>
+              <label class="switch switch-3d switch-primary">
+                <input type="checkbox" class="switch-input" formControlName="isActive"   >
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+            
+            </div>
+   
+                 <div class="row">
+                   <div class="col-6">
+                     <button type="button" class="btn btn-sm btn-primary" (click)="onSubmit()" [disabled]="registerForm.invalid"><i class="icon-cursor"></i> Login</button>
+                     <a  [routerLink]="['/admin/listing']" > <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Cancel</button></a>
+
+                    </div>
+                   
+                 </div>
+               </form>
+        </div>
+      </div><!--/.col-->
+    </div>
+    </div>
+    </div>

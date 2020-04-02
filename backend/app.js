@@ -4,23 +4,27 @@ var cors = require('cors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-mongoose = require('mongoose');
-MongoClient = require('mongodb').MongoClient;
+//mongoose = require('mongoose');
+//MongoClient = require('mongodb').MongoClient;
 ObjectId = require('mongodb').ObjectId;
 jwt = require('jsonwebtoken');
 expressJwt = require('express-jwt');
-mongoose.connect('mongodb://localhost:27017/schoolApp', { useNewUrlParser: true,useUnifiedTopology: true,
-  useNewUrlParser: true,
-  useFindAndModify: false }).then(
-  () => { console.log('connected'); },
-  err => { console.log(err); }
-);
-MongoClient.connect('mongodb://localhost:27017', function(err, client) {
-  //console.log(err);
-  console.log(client);
-  db = client.db('schoolApp');
- // client.close();
-});
+// mongoose.connect('mongodb://localhost:27017/schoolApp', { useNewUrlParser: true,useUnifiedTopology: true,
+//   useNewUrlParser: true,
+//   useFindAndModify: false }).then(
+//   () => { console.log('connected'); },
+//   err => { console.log(err); }
+// );
+// MongoClient.connect('mongodb://localhost:27017', function(err, client) {
+//   //console.log(err);
+//   console.log(client);
+//   db = client.db('schoolApp');
+//  // client.close();
+// });
+
+
+//ATLAS DATABASE CONNECTION
+require("./app/db/dbconnection");
 
 crypto = require('crypto');
 var indexRouter = require('./routes/index');
